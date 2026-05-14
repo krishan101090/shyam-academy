@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: 255 255 255;
+  --text: 15 23 42;
+  --muted: 71 85 105;
+}
+
+.dark {
+  --surface: 15 23 42;
+  --text: 248 250 252;
+  --muted: 148 163 184;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-50;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/about-us/", "destination": "/about", "permanent": true },
+    { "source": "/nios-admissions-delhi", "destination": "/nios-admission-delhi", "permanent": true },
+    { "source": "/nios-admissions-delhi/", "destination": "/nios-admission-delhi", "permanent": true }
+  ]
+}
