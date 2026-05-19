@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "NIOS admissions & guidance (10th & 12th) Delhi",
+  title: "NIOS guide — tuition & 10th/12th admissions Delhi",
   description:
-    "Understand NIOS Secondary and Senior Secondary options in Delhi, official SDMIS admissions, subject planning, and how Shri Shyam Academy supports learners alongside NIOS requirements. For a callback and FAQs, use the NIOS admission Delhi page.",
+    "Learn how NIOS Secondary (10th) and Senior Secondary (12th) work in Delhi, SDMIS admissions, and how Shri Shyam Academy provides NIOS tuition and admission guidance.",
   keywords: ["NIOS Delhi", "NIOS guide", "SDMIS NIOS", "NIOS 10th", "NIOS 12th", "open school Delhi", "NIOS admission help"],
   alternates: { canonical: "/nios" },
 };
@@ -41,11 +41,12 @@ export default function NiosPage() {
         </div>
       </div>
 
-      <h1 className="mt-10 font-display text-4xl font-semibold text-slate-900 dark:text-white">NIOS: a flexible recognised pathway</h1>
+      <h1 className="mt-10 font-display text-4xl font-semibold text-slate-900 dark:text-white">Your guide to NIOS in Delhi</h1>
       <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
-        The National Institute of Open Schooling (NIOS) is an autonomous institution under the Ministry of Education, Government of India. It offers
-        open and distance learning at Secondary (class 10th equivalent) and Senior Secondary (class 12th equivalent) levels, alongside vocational and
-        life-enrichment programmes.
+        The National Institute of Open Schooling (NIOS) is India&apos;s open school board under the Ministry of Education. Shri Shyam Academy helps Delhi
+        learners with <strong className="font-semibold text-slate-800 dark:text-slate-100">NIOS tuition</strong> and{" "}
+        <strong className="font-semibold text-slate-800 dark:text-slate-100">admissions for class 10th and 12th</strong> — alongside official SDMIS
+        steps you complete yourself.
       </p>
 
       <h2 className="mt-10 font-display text-2xl font-semibold text-slate-900 dark:text-white">Why families consider NIOS</h2>
@@ -72,12 +73,12 @@ export default function NiosPage() {
         plan academics—study routines, subject understanding, past paper practice, and revision—while you complete official steps on SDMIS.
       </p>
 
-      <h2 className="mt-10 font-display text-2xl font-semibold text-slate-900 dark:text-white">How Shri Shyam Academy supports NIOS students</h2>
+      <h2 className="mt-10 font-display text-2xl font-semibold text-slate-900 dark:text-white">Tuition & admissions at Shri Shyam Academy</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-600 dark:text-slate-300">
-        <li>Clarity on what to study first, and how to align NIOS subject choices with future goals.</li>
-        <li>Teaching support across relevant school subjects, including senior secondary humanities and Computer Science with Python.</li>
-        <li>Exam technique: time management, structured answers, and consistent practice.</li>
-        <li>A local point of contact in West Sagarpur for academic mentoring alongside your self-paced NIOS journey.</li>
+        <li>NIOS 10th and 12th admission guidance: eligibility, documents, subjects, and SDMIS steps.</li>
+        <li>Regular tuition for your registered NIOS subjects — Secondary and Senior Secondary.</li>
+        <li>TMA support, revision plans, and public exam practice.</li>
+        <li>Face-to-face doubt classes in West Sagarpur, New Delhi.</li>
       </ul>
 
       <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">

@@ -18,7 +18,7 @@ export function SiteFooter() {
               <div>
                 <p className="font-display text-lg font-semibold text-slate-900 dark:text-white">Shri Shyam Academy</p>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-                  Coaching for classes 1st to 12th, competitive exams, and NIOS admissions support in Delhi.
+                  NIOS tuition and admissions for class 10th & 12th in West Sagarpur, New Delhi.
                 </p>
               </div>
             </div>
@@ -33,7 +33,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link className="hover:text-brand-600 dark:hover:text-brand-400" href="/services">
-                  Services
+                  NIOS tuition
                 </Link>
               </li>
               <li>

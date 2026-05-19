@@ -4,7 +4,8 @@ import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Shri Shyam Academy in West Sagarpur, New Delhi. Call +91 84485 37313 or send an enquiry.",
+  description:
+    "Contact Shri Shyam Academy for NIOS tuition or 10th/12th admission help in West Sagarpur, Delhi. Call +91 84485 37313 or send an enquiry.",
   alternates: { canonical: "/contact" },
 };
 
@@ -14,7 +15,9 @@ export default function ContactPage() {
       <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
         <div>
           <h1 className="font-display text-4xl font-semibold text-slate-900 dark:text-white">Contact us</h1>
-          <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">Join us for admissions, batch details, or a free trial class.</p>
+          <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
+            Call or message for NIOS 10th/12th admission guidance, tuition batch timings, or a free counselling call.
+          </p>
           <div className="mt-8 space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div className="flex gap-3">
               <Image src="/images/wp/location_icon.png" width={20} height={20} className="mt-0.5 h-5 w-5 shrink-0" alt="" />
@@ -47,7 +50,9 @@ export default function ContactPage() {
         </div>
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Send a message</h2>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">We read every enquiry and respond as soon as possible.</p>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            Mention NIOS 10th, NIOS 12th, admission, or tuition in your message so we can help faster.
+          </p>
           <div className="mt-6">
             <ContactForm />
           </div>

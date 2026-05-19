@@ -5,7 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
+  { href: "/services", label: "NIOS tuition" },
   { href: "/nios-admission-delhi", label: "NIOS admission" },
   { href: "/nios", label: "NIOS guide" },
   { href: "/contact", label: "Contact" },
@@ -25,7 +25,7 @@ export function SiteHeader() {
           />
           <div className="leading-tight">
             <p className="font-display text-base font-semibold text-slate-900 dark:text-white">Shri Shyam Academy</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Learning today, leading tomorrow</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">NIOS tuition · 10th & 12th admissions</p>
           </div>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">

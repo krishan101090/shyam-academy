@@ -13,11 +13,11 @@ The agent **cannot** log into your Google account. Follow these steps in your br
    - URL: `https://shrishyamacademy.com`  
    - Stream name: `Shri Shyam Academy website`  
 4. Copy **Measurement ID** (`G-XXXXXXXXXX`).
-5. Add to `/Users/krishan/shyam-academy/.env.local`:
+5. Optional: add to `.env.local` (the site defaults to `G-SMFQVYZTZ8` if unset):
    ```
    NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
    ```
-6. In your host (Vercel/Netlify): same variable → **Production** → redeploy.
+6. Push to `main` (Vercel redeploys automatically) or redeploy from your host dashboard.
 7. In GA4: **Admin** → **Data display** → **Events** → find `generate_lead` after a test form submit → **Mark as key event**.
 8. **Search Console**: link property (Admin → Product links → Search Console).
 

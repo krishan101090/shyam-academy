@@ -1,51 +1,52 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "NIOS tuition",
   description:
-    "Coaching services at Shri Shyam Academy: classes 1–10, 11–12 humanities and CS, KVS, CUET, CTET, Python, DSA, free trial classes, and NIOS guidance.",
+    "NIOS tuition in Delhi for class 10th and 12th: subject coaching, TMA support, exam practice, and admissions guidance at Shri Shyam Academy, West Sagarpur.",
   alternates: { canonical: "/services" },
 };
 
 const blocks = [
   {
-    title: "Classes 1st to 10th",
+    title: "NIOS Secondary (class 10th) tuition",
     items: [
-      "Hindi: reading, writing, grammar, and expression",
-      "English: comprehension, grammar, and composition",
-      "Mathematics: concepts, problem solving, and exam practice",
-      "Science: Physics, Chemistry, and Biology fundamentals",
-      "Social Science: History, Geography, Civics, and Economics basics",
-      "EVS: awareness, scientific temper, and age-appropriate projects",
+      "Teaching for five NIOS subjects you register on SDMIS",
+      "Concept clarity in Hindi, English, Maths, Science, and Social Science",
+      "TMA guidance and submission reminders per NIOS rules",
+      "Numericals, maps, and writing practice for public exams",
+      "Weekly tests and revision plans before your exam cycle",
     ],
   },
   {
-    title: "Classes 11th and 12th (Career Maker)",
+    title: "NIOS Senior Secondary (class 12th) tuition",
     items: [
-      "History: board-focused depth with answer writing practice",
-      "Geography: maps, concepts, and structured revision",
-      "English: literature and language components",
-      "Economics: micro and macro foundations with application",
-      "Political Science: concepts, contemporary connections, and exam technique",
-      "IP and Computer Science with Python: practicals, logic, and programming maturity",
-      "Data Structures and Algorithms: patterns, implementation, and problem solving",
+      "Subject coaching for your chosen NIOS stream — arts, commerce, or science",
+      "History, Geography, Economics, Political Science, and English depth",
+      "Computer Science with Python and practical-oriented preparation",
+      "Answer writing, case studies, and time management for board-style papers",
+      "Past paper practice aligned to your Senior Secondary subject list",
     ],
   },
   {
-    title: "Entrance and teaching job preparation",
+    title: "NIOS admission support — 10th & 12th",
     items: [
-      "KVS preparation with targeted practice and strategy",
-      "CUET coaching aligned to exam sections and time management",
-      "CTET preparation for aspiring teachers",
+      "Understanding Secondary vs Senior Secondary and which level fits you",
+      "Document checklist and subject combination advice before SDMIS",
+      "Walkthrough of official steps on sdmis.nios.ac.in (you submit; we guide)",
+      "Linking admission timing with when tuition batches start",
+      "Free callback via our NIOS admission Delhi page",
     ],
   },
   {
-    title: "Special programmes",
+    title: "How tuition works at our centre",
     items: [
-      "Free trial classes to experience teaching quality",
-      "Personalised attention through structured doubt handling",
-      "NIOS admissions guidance for 10th and 12th learners in Delhi (process clarity + study planning)",
+      "Small-batch doubt classes in West Sagarpur, New Delhi",
+      "Flexible pacing for open-school learners who study at home",
+      "Regular progress updates for parents",
+      "Free counselling call to match subjects and batch timing",
     ],
   },
 ];
@@ -54,11 +55,25 @@ export default function ServicesPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
-        <h1 className="font-display text-4xl font-semibold text-slate-900 dark:text-white">Our services</h1>
+        <h1 className="font-display text-4xl font-semibold text-slate-900 dark:text-white">NIOS tuition & admissions</h1>
         <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
-          Shri Shyam Academy offers a broad set of programmes—from foundational school support to senior secondary depth, competitive exam readiness,
-          and flexible NIOS pathways.
+          Shri Shyam Academy focuses on NIOS learners in Delhi — regular tuition after you enrol, and admissions guidance for class 10th and 12th through
+          the official SDMIS portal.
         </p>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/nios-admission-delhi"
+            className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
+          >
+            NIOS 10th / 12th admission enquiry
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800"
+          >
+            Book tuition
+          </Link>
+        </div>
       </div>
       <div className="relative mt-10 h-48 w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 sm:h-56">
         <Image
@@ -66,7 +81,7 @@ export default function ServicesPage() {
           width={1280}
           height={848}
           className="h-full w-full object-cover"
-          alt="Students in a classroom"
+          alt="NIOS students in tuition class"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-900/65 via-slate-900/25 to-transparent dark:from-slate-950/75" />
       </div>
@@ -86,12 +101,20 @@ export default function ServicesPage() {
         ))}
       </div>
       <section className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-950">
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Why families choose Shri Shyam Academy</h2>
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Why choose us for NIOS in Delhi</h2>
         <ul className="mt-4 grid gap-3 text-sm text-slate-600 dark:text-slate-300 sm:grid-cols-2">
-          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">Experienced faculty with exam-aware teaching</li>
-          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">Engaging classes with regular assessments</li>
-          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">Clear communication on progress and next steps</li>
-          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">A supportive environment for consistent improvement</li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+            NIOS-only focus — tuition matched to your SDMIS subjects
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+            Clear admission guidance for 10th and 12th without false promises
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+            Local centre in West Sagarpur for doubts and revision
+          </li>
+          <li className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+            Experienced faculty for Secondary and Senior Secondary learners
+          </li>
         </ul>
       </section>
     </div>

@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Shri Shyam Academy",
     short_name: "Shyam Academy",
     description:
-      "Coaching for classes 1–12, KVS, CUET, CTET, and NIOS admissions guidance in West Sagarpur, New Delhi.",
+      "NIOS tuition and 10th/12th admissions in West Sagarpur, New Delhi.",
     start_url: "/",
     display: "browser",
     background_color: "#f8fafc",

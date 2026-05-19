@@ -23,47 +23,46 @@ const siteUrl = "https://shrishyamacademy.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Shri Shyam Academy | Coaching & NIOS Admissions Delhi",
+    default: "Shri Shyam Academy | NIOS Tuition & 10th/12th Admission Delhi",
     template: "%s | Shri Shyam Academy",
   },
   description:
-    "Shri Shyam Academy in West Sagarpur, New Delhi offers coaching for classes 1–12, KVS, CUET, CTET, Computer Science with Python, and guidance for NIOS Secondary and Senior Secondary admissions.",
+    "NIOS tuition and admissions for class 10th & 12th in Delhi. Shri Shyam Academy, West Sagarpur — SDMIS guidance, subject coaching, TMA support, and exam preparation for Secondary and Senior Secondary.",
   keywords: [
     "Shri Shyam Academy",
-    "coaching Delhi",
-    "NIOS Delhi",
+    "NIOS tuition Delhi",
+    "NIOS coaching Delhi",
     "NIOS admission Delhi",
-    "NIOS 10th Delhi",
-    "NIOS 12th Delhi",
-    "NIOS SDMIS",
-    "NIOS coaching Sagarpur",
+    "NIOS 10th admission Delhi",
+    "NIOS 12th admission Delhi",
+    "NIOS 10th tuition",
+    "NIOS 12th tuition",
+    "NIOS SDMIS help",
     "NIOS open school Delhi",
-    "Sagarpur tuition",
-    "CUET coaching",
-    "CTET preparation",
-    "KVS preparation",
+    "NIOS Sagarpur",
+    "NIOS West Delhi",
   ],
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: siteUrl,
     siteName: "Shri Shyam Academy",
-    title: "Shri Shyam Academy — Learning today, leading tomorrow",
+    title: "Shri Shyam Academy — NIOS tuition & admissions Delhi",
     description:
-      "Quality coaching from class 1 to 12, competitive exam prep, and NIOS admissions support in New Delhi.",
+      "NIOS tuition and 10th/12th admission guidance in West Sagarpur, New Delhi. SDMIS support, subject coaching, and exam preparation.",
     images: [
       {
         url: "/images/hero-coaching.webp",
         width: 1792,
         height: 1024,
-        alt: "Students at Shri Shyam Academy coaching centre, Delhi",
+        alt: "NIOS tuition at Shri Shyam Academy, Delhi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shri Shyam Academy",
-    description: "Coaching and NIOS admissions support in New Delhi.",
+    description: "NIOS tuition and admissions for 10th & 12th in New Delhi.",
     images: ["/images/hero-coaching.webp"],
   },
   alternates: { canonical: "/" },
@@ -90,7 +89,7 @@ const jsonLd = {
   logo: `${siteUrl}/images/logo-site.png`,
   image: [`${siteUrl}/images/hero-coaching.webp`, `${siteUrl}/images/logo-site.png`],
   description:
-    "Educational coaching for school grades 1–12, competitive exams, and NIOS admissions guidance.",
+    "NIOS tuition and admissions guidance for Secondary (10th) and Senior Secondary (12th) in Delhi.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

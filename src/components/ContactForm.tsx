@@ -29,7 +29,7 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: "Shri Shyam Academy — website enquiry",
+          subject: "Shri Shyam Academy — NIOS enquiry",
           from_name: name,
           email,
           phone,
@@ -110,6 +110,7 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
+          placeholder="e.g. NIOS 12th admission, subjects, or tuition for class 10th…"
           className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
         />
       </div>
