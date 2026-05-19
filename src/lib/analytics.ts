@@ -1,4 +1,5 @@
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+export const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-SMFQVYZTZ8";
 
 export function isValidGaMeasurementId(id: string): boolean {
   return /^G-[A-Z0-9]+$/i.test(id.trim());

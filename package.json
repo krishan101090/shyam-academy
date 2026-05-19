@@ -7,10 +7,9 @@
     "dev": "next dev",
     "dev:clean": "npm run clean && next dev",
     "dev:3847": "npm run clean && next dev -p 3847",
-    "build": "next build",
+    "build": "NEXT_PUBLIC_GA_MEASUREMENT_ID=G-SMFQVYZTZ8 next build",
     "start": "next start",
-    "lint": "next lint",
-    "github:push": "bash scripts/github-create-and-push.sh"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "15.5.18",

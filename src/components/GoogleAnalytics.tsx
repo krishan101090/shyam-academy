@@ -1,27 +1,29 @@
-import Script from "next/script";
 import { Suspense } from "react";
 import { AnalyticsPageView } from "./AnalyticsPageView";
-import { isValidGaMeasurementId } from "@/lib/analytics";
+import { GA_MEASUREMENT_ID, isValidGaMeasurementId } from "@/lib/analytics";
 
-type Props = { measurementId: string };
-
-export function GoogleAnalytics({ measurementId }: Props) {
-  const id = measurementId.trim();
+export function GoogleAnalyticsHead() {
+  const id = GA_MEASUREMENT_ID;
   if (!isValidGaMeasurementId(id)) return null;
 
   return (
     <>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${id}`} strategy="afterInteractive" />
-      <Script
-        id="ga4-config"
-        strategy="afterInteractive"
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
+      <script
         dangerouslySetInnerHTML={{
-          __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${id}',{anonymize_ip:true,send_page_view:true});`,
+          __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${id}');`,
         }}
       />
-      <Suspense fallback={null}>
-        <AnalyticsPageView />
-      </Suspense>
     </>
+  );
+}
+
+export function GoogleAnalytics() {
+  if (!isValidGaMeasurementId(GA_MEASUREMENT_ID)) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsPageView />
+    </Suspense>
   );
 }
