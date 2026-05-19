@@ -57,11 +57,7 @@ export function LeadFormNios() {
       {!accessKey && (
         <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-100">
           Add <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY</code> in{" "}
-          <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">.env.local</code> so this form can email you. See{" "}
-          <a className="font-semibold underline" href="https://web3forms.com" target="_blank" rel="noreferrer">
-            web3forms.com
-          </a>
-          .
+          <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">.env.local</code>. In Web3Forms, set the destination to krishan101090@gmail.com.
         </p>
       )}
       <div className="grid gap-4 sm:grid-cols-2">

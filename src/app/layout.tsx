@@ -77,7 +77,7 @@ const jsonLd = {
   name: "Shri Shyam Academy",
   url: siteUrl,
   telephone: "+91-8448537313",
-  email: "krishan101090@gmail.com",
+  email: "contact@shrishyamacademy.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "RZ 41 A, Shanker Park, Near Allahabad Dairy, West Sagar Pur Gandhi Market",

@@ -41,8 +41,8 @@ export default function ContactPage() {
               <Image src="/images/wp/envelop_icon.png" width={16} height={16} className="mt-1 h-4 w-4 shrink-0" alt="" />
               <div>
                 <p className="text-sm font-semibold text-slate-900 dark:text-white">Email</p>
-                <a className="mt-1 inline-block text-sm text-slate-600 hover:text-brand-600 dark:text-slate-300" href="mailto:krishan101090@gmail.com">
-                  krishan101090@gmail.com
+                <a className="mt-1 inline-block text-sm text-slate-600 hover:text-brand-600 dark:text-slate-300" href="mailto:contact@shrishyamacademy.com">
+                  contact@shrishyamacademy.com
                 </a>
               </div>
             </div>

@@ -143,14 +143,12 @@ export default function NiosAdmissionDelhiPage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
+              <Link
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
-                href="https://sdmis.nios.ac.in/"
-                target="_blank"
-                rel="noreferrer"
               >
-                Open SDMIS (NIOS)
-              </a>
+                Enquire about admission
+              </Link>
               <a
                 className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
                 href="tel:+918448537313"

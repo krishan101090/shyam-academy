@@ -55,11 +55,8 @@ export function ContactForm() {
       {!accessKey && (
         <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-100">
           Add your Web3Forms access key in <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">.env.local</code> as{" "}
-          <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY</code>. Create a free key at{" "}
-          <a className="font-semibold underline" href="https://web3forms.com" target="_blank" rel="noreferrer">
-            web3forms.com
-          </a>{" "}
-          and set the destination email to krishan101090@gmail.com in the dashboard.
+          <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY</code> and set the Web3Forms destination to
+          krishan101090@gmail.com (forms are not sent to the public contact address).
         </p>
       )}
       <div className="grid gap-4 sm:grid-cols-2">

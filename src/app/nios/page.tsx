@@ -15,7 +15,7 @@ export default function NiosPage() {
       <div className="rounded-2xl border border-brand-200 bg-brand-50 p-6 dark:border-brand-900/40 dark:bg-brand-950/30">
         <p className="text-sm font-semibold text-brand-900 dark:text-brand-100">NIOS admission in Delhi</p>
         <p className="mt-2 text-sm text-brand-900/80 dark:text-brand-100/80">
-          Start on the dedicated lead page for <strong className="font-semibold">NIOS admission Delhi</strong> (10th & 12th): callback form, FAQs, and SDMIS links.
+          Start on the dedicated lead page for <strong className="font-semibold">NIOS admission Delhi</strong> (10th & 12th): callback form, FAQs, and SDMIS guidance.
         </p>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
           <Link
@@ -24,19 +24,11 @@ export default function NiosPage() {
           >
             NIOS admission — apply / callback
           </Link>
-          <a
-            className="inline-flex items-center justify-center rounded-lg border border-brand-200 bg-white px-4 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-100 dark:border-brand-900/50 dark:bg-slate-950 dark:text-brand-50 dark:hover:bg-slate-900"
-            href="https://sdmis.nios.ac.in/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Visit sdmis.nios.ac.in
-          </a>
           <Link
             className="inline-flex items-center justify-center rounded-lg border border-brand-200 bg-white px-4 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-100 dark:border-brand-900/50 dark:bg-slate-950 dark:text-brand-50 dark:hover:bg-slate-900"
             href="/contact"
           >
-            Contact only
+            Contact us
           </Link>
         </div>
       </div>

@@ -66,9 +66,9 @@ export function SiteFooter() {
             <p className="mt-2 text-sm">
               <a
                 className="text-slate-600 underline decoration-slate-300 underline-offset-4 hover:text-brand-600 dark:text-slate-400"
-                href="mailto:krishan101090@gmail.com"
+                href="mailto:contact@shrishyamacademy.com"
               >
-                krishan101090@gmail.com
+                contact@shrishyamacademy.com
               </a>
             </p>
           </div>

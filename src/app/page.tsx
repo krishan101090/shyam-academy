@@ -118,15 +118,9 @@ export default function HomePage() {
                 </ul>
                 <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-700 dark:bg-slate-950 dark:text-slate-200">
                   <p className="font-semibold text-slate-900 dark:text-white">Official NIOS portal</p>
-                  <p className="mt-1">Learner admissions are completed on SDMIS. We coach and guide; NIOS holds the official record.</p>
-                  <a
-                    className="mt-3 inline-flex text-sm font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300"
-                    href="https://sdmis.nios.ac.in/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Open sdmis.nios.ac.in →
-                  </a>
+                  <p className="mt-1">
+                    Learner admissions are completed on the official NIOS SDMIS portal. We coach and guide; NIOS holds the official record.
+                  </p>
                 </div>
               </div>
             </div>
@@ -172,14 +166,6 @@ export default function HomePage() {
                 >
                   Start NIOS admission enquiry
                 </Link>
-                <a
-                  className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 dark:border-slate-700 dark:text-white dark:hover:bg-slate-900"
-                  href="https://sdmis.nios.ac.in/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Open NIOS SDMIS portal
-                </a>
                 <Link
                   href="/nios"
                   className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 dark:border-slate-700 dark:text-white dark:hover:bg-slate-900"
