@@ -1,5 +1,6 @@
 "use client";
 
+import { trackLead } from "@/lib/analytics";
 import { useState } from "react";
 
 type FormState = "idle" | "loading" | "success" | "error";
@@ -42,6 +43,7 @@ export function ContactForm() {
         return;
       }
       form.reset();
+      trackLead({ form: "contact" });
       setState("success");
     } catch {
       setState("error");
