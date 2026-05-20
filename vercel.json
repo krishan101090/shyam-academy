@@ -1,4 +1,10 @@
 {
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers": [{ "key": "Content-Type", "value": "application/xml; charset=utf-8" }]
+    }
+  ],
   "redirects": [
     { "source": "/", "destination": "/en", "permanent": false },
     { "source": "/about", "destination": "/en/about", "permanent": true },
