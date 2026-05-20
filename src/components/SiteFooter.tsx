@@ -1,7 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import { localePath } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/get-dictionary";
 
-export function SiteFooter() {
+type SiteFooterProps = {
+  locale: Locale;
+  dict: Dictionary;
+};
+
+export function SiteFooter({ locale, dict }: SiteFooterProps) {
+  const f = dict.footer;
   return (
     <footer className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -17,47 +26,53 @@ export function SiteFooter() {
               />
               <div>
                 <p className="font-display text-lg font-semibold text-slate-900 dark:text-white">Shri Shyam Academy</p>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-                  NIOS tuition and admissions for class 10th & 12th in West Sagarpur, New Delhi.
-                </p>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{f.tagline}</p>
               </div>
             </div>
           </div>
           <div>
-            <p className="text-sm font-semibold text-slate-900 dark:text-white">Explore</p>
+            <p className="text-sm font-semibold text-slate-900 dark:text-white">{f.explore}</p>
             <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
               <li>
-                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href="/about">
-                  About us
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/about")}>
+                  {f.about}
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href="/services">
-                  NIOS tuition
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/services")}>
+                  {f.tuition}
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href="/nios-admission-delhi">
-                  NIOS admission Delhi
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/career-counselling")}>
+                  {f.career}
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href="/nios">
-                  NIOS guide
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/entrance-exams")}>
+                  {f.entrance}
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href="/contact">
-                  Contact
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/nios-admission-delhi")}>
+                  {f.niosAdmission}
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/nios")}>
+                  {f.niosGuide}
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/contact")}>
+                  {f.callback}
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-slate-900 dark:text-white">Visit</p>
-            <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
-              RZ 41 A, Shanker Park, Near Allahabad Dairy, West Sagar Pur Gandhi Market, New Delhi 110046
-            </p>
+            <p className="text-sm font-semibold text-slate-900 dark:text-white">{f.visit}</p>
+            <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{f.address}</p>
             <p className="mt-2 text-sm">
               <a className="font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400" href="tel:+918448537313">
                 +91 84485 37313
@@ -74,8 +89,10 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-2 border-t border-slate-100 pt-8 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Shri Shyam Academy. All rights reserved.</p>
-          <p className="text-balance">NIOS is a programme of the Ministry of Education, Government of India.</p>
+          <p>
+            © {new Date().getFullYear()} Shri Shyam Academy. {f.rights}
+          </p>
+          <p className="text-balance">{f.disclaimer}</p>
         </div>
       </div>
     </footer>

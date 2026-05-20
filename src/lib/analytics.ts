@@ -19,9 +19,10 @@ export function trackEvent(eventName: string, params?: GtagParams) {
   window.gtag("event", eventName, params);
 }
 
-export function trackLead(params: { form: string; level?: string }) {
+export function trackLead(params: { form: string; level?: string; interest?: string }) {
   trackEvent("generate_lead", {
     form_name: params.form,
     ...(params.level ? { nios_level: params.level } : {}),
+    ...(params.interest ? { lead_interest: params.interest } : {}),
   });
 }

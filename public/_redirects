@@ -1,2 +1,12 @@
-/about-us /about 301
-/nios-admissions-delhi /nios-admission-delhi 301
+/ /en 302
+/about /en/about 301
+/services /en/services 301
+/nios /en/nios 301
+/nios-admission-delhi /en/nios-admission-delhi 301
+/career-counselling /en/career-counselling 301
+/entrance-exams /en/entrance-exams 301
+/contact /en/contact 301
+/about-us /en/about 301
+/nios-admissions-delhi /en/nios-admission-delhi 301
+/career-counseling /en/career-counselling 301
+/entrance-exam /en/entrance-exams 301

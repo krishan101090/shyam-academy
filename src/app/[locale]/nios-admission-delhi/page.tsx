@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { notFound } from "next/navigation";
+import { isLocale, localePath, type Locale } from "@/i18n/config";
+import { L } from "@/lib/with-locale-links";
 import { LeadFormNios } from "@/components/LeadFormNios";
+import { hindiSeoKeywords } from "@/lib/seo-keywords";
+import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
 
-const siteUrl = "https://shrishyamacademy.com";
-const pagePath = "/nios-admission-delhi";
-const pageUrl = `${siteUrl}${pagePath}`;
+type PageProps = { params: Promise<{ locale: string }> };
 
 const pageDescription =
   "NIOS admission support in Delhi for Secondary (10th) and Senior Secondary (12th): SDMIS steps, subject planning, exam coaching, and callbacks from Shri Shyam Academy in West Sagarpur, New Delhi.";
 
-export const metadata: Metadata = {
-  title: "NIOS Admission Delhi | Class 10 & 12 Form Help, SDMIS & Coaching",
-  description: pageDescription,
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) return {};
+  const isHi = raw === "hi";
+  const pageUrl = absoluteLocaleUrl(raw, "/nios-admission-delhi");
+  return {
+  title: isHi ? "NIOS दाखिला दिल्ली | 10वीं 12वीं SDMIS और ट्यूशन" : "NIOS Admission Delhi | Class 10 & 12 Form Help, SDMIS & Coaching",
+  description: isHi
+    ? "दिल्ली में NIOS 10वीं और 12वीं दाखिला: SDMIS, विषय योजना और ट्यूशन — श्री श्याम एकेडमी, वेस्ट सागरपुर।"
+    : pageDescription,
   keywords: [
     "NIOS admission Delhi",
     "NIOS admission 2026 Delhi",
@@ -23,8 +32,9 @@ export const metadata: Metadata = {
     "NIOS form help Delhi",
     "NIOS Sagarpur",
     "NIOS West Delhi",
+    ...hindiSeoKeywords,
   ],
-  alternates: { canonical: pagePath },
+  alternates: pageAlternates(raw, "/nios-admission-delhi"),
   openGraph: {
     type: "website",
     url: pageUrl,
@@ -41,7 +51,8 @@ export const metadata: Metadata = {
     images: ["/images/hero-coaching.webp"],
   },
   robots: { index: true, follow: true },
-};
+  };
+}
 
 const faqItems = [
   {
@@ -70,45 +81,33 @@ const faqItems = [
   },
 ];
 
-const jsonLdGraph = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": `${pageUrl}#webpage`,
-      url: pageUrl,
-      name: "NIOS Admission Delhi | Class 10 & 12 Help | Shri Shyam Academy",
-      description: pageDescription,
-      isPartOf: { "@type": "WebSite", url: siteUrl, name: "Shri Shyam Academy" },
-      about: { "@type": "Thing", name: "NIOS Secondary and Senior Secondary admissions in Delhi" },
-      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
-      primaryImageOfPage: { "@type": "ImageObject", url: `${siteUrl}/images/hero-coaching.webp` },
-      speakable: {
-        "@type": "SpeakableSpecification",
-        cssSelector: ["h1", ".lead-summary"],
-      },
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${pageUrl}#breadcrumb`,
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-        { "@type": "ListItem", position: 2, name: "NIOS admission Delhi", item: pageUrl },
-      ],
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${pageUrl}#faq`,
-      mainEntity: faqItems.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
-      })),
-    },
-  ],
-};
+export default async function NiosAdmissionDelhiPage({ params }: PageProps) {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) notFound();
+  const locale: Locale = raw;
+  const pageUrl = `${siteUrl}${localePath(locale, "/nios-admission-delhi")}`;
 
-export default function NiosAdmissionDelhiPage() {
+  const jsonLdGraph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        url: pageUrl,
+        name: "NIOS Admission Delhi | Class 10 & 12 Help | Shri Shyam Academy",
+        description: pageDescription,
+        inLanguage: locale === "hi" ? "hi" : "en-IN",
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }} />
@@ -117,9 +116,9 @@ export default function NiosAdmissionDelhiPage() {
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <Link className="font-medium text-brand-700 hover:text-brand-800 dark:text-brand-400" href="/">
+                <L className="font-medium text-brand-700 hover:text-brand-800 dark:text-brand-400" locale={locale} href="/">
                   Home
-                </Link>
+                </L>
               </li>
               <li aria-hidden="true">/</li>
               <li className="text-slate-900 dark:text-slate-200">NIOS admission Delhi</li>
@@ -143,24 +142,26 @@ export default function NiosAdmissionDelhiPage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
+              <L
+                locale={locale}
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
               >
                 Enquire about admission
-              </Link>
+              </L>
               <a
                 className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
                 href="tel:+918448537313"
               >
                 Call +91 84485 37313
               </a>
-              <Link
+              <L
+                locale={locale}
                 className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
                 href="/nios"
               >
                 Read NIOS guide
-              </Link>
+              </L>
             </div>
 
             <section className="mt-12" aria-labelledby="why-heading">

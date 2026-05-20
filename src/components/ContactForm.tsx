@@ -1,11 +1,20 @@
 "use client";
 
 import { trackLead } from "@/lib/analytics";
+import type { Dictionary } from "@/i18n/get-dictionary";
 import { useState } from "react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
-export function ContactForm() {
+type ContactFormProps = {
+  compact?: boolean;
+  labels: Dictionary["form"];
+};
+
+const fieldClass =
+  "mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white";
+
+export function ContactForm({ compact = false, labels }: ContactFormProps) {
   const [state, setState] = useState<FormState>("idle");
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
@@ -20,6 +29,7 @@ export function ContactForm() {
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const phone = String(formData.get("phone") ?? "").trim();
+    const interest = String(formData.get("interest") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
 
     setState("loading");
@@ -29,11 +39,12 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: "Shri Shyam Academy — NIOS enquiry",
+          subject: "Lead — contact page (shrishyamacademy.com)",
           from_name: name,
           email,
           phone,
-          message,
+          interest,
+          message: [interest && `Interest: ${interest}`, message].filter(Boolean).join("\n\n"),
           replyto: email,
         }),
       });
@@ -43,7 +54,7 @@ export function ContactForm() {
         return;
       }
       form.reset();
-      trackLead({ form: "contact" });
+      trackLead({ form: "contact", interest });
       setState("success");
     } catch {
       setState("error");
@@ -51,79 +62,73 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className={compact ? "space-y-3" : "space-y-4"} id="lead-form">
       {!accessKey && (
         <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-100">
-          Add your Web3Forms access key in <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">.env.local</code> as{" "}
-          <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY</code> and set the Web3Forms destination to
-          krishan101090@gmail.com (forms are not sent to the public contact address).
+          Add <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY</code> in{" "}
+          <code className="rounded bg-amber-100 px-1 dark:bg-amber-900/60">.env.local</code> (Web3Forms → krishan101090@gmail.com).
         </p>
       )}
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div>
+        <label htmlFor="interest" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          {labels.interest}
+        </label>
+        <select id="interest" name="interest" required className={fieldClass} defaultValue="">
+          <option value="" disabled>
+            —
+          </option>
+          {labels.interests.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-            Full name
+            {labels.name}
           </label>
-          <input
-            id="name"
-            name="name"
-            required
-            autoComplete="name"
-            className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none ring-brand-500/0 transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-          />
+          <input id="name" name="name" required autoComplete="name" className={fieldClass} />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-            Email
+          <label htmlFor="phone" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+            {labels.phone}
           </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-          />
+          <input id="phone" name="phone" type="tel" required autoComplete="tel" placeholder="+91 …" className={fieldClass} />
         </div>
       </div>
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-          Phone (optional)
+        <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          {labels.email}
         </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          autoComplete="tel"
-          className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-        />
+        <input id="email" name="email" type="email" required autoComplete="email" className={fieldClass} />
       </div>
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-          Message
+          {labels.message}
         </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={5}
-          placeholder="e.g. NIOS 12th admission, subjects, or tuition for class 10th…"
-          className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-        />
+        {compact ? (
+          <input id="message" name="message" type="text" className={fieldClass} />
+        ) : (
+          <textarea id="message" name="message" rows={3} className={fieldClass} />
+        )}
       </div>
       <button
         type="submit"
         disabled={state === "loading"}
-        className="inline-flex w-full items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {state === "loading" ? "Sending…" : "Send message"}
+        {state === "loading" ? labels.sending : labels.submit}
       </button>
       {state === "success" && (
-        <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Thank you — we will get back to you shortly.</p>
+        <p className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm font-medium text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-200">
+          {labels.success}
+        </p>
       )}
       {state === "error" && (
         <p className="text-sm font-medium text-red-700 dark:text-red-400">
-          Something went wrong. Please check your details and try again, or call +91 84485 37313.
+          {labels.error}
         </p>
       )}
     </form>

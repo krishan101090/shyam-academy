@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans, Source_Serif_4 } from "next/font/google";
+import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import "./globals.css";
 import { GoogleAnalytics, GoogleAnalyticsHead } from "@/components/GoogleAnalytics";
 import { Providers } from "@/components/Providers";
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -41,7 +40,9 @@ export const metadata: Metadata = {
     "NIOS open school Delhi",
     "NIOS Sagarpur",
     "NIOS West Delhi",
+    ...hindiSeoKeywords,
   ],
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
     description: "NIOS tuition and admissions for 10th & 12th in New Delhi.",
     images: ["/images/hero-coaching.webp"],
   },
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/en" },
   verification: {
     google: "xQFNkckm29t0f8d3FzUcUCaC2b_F5KrU1C_K5szdgXM",
   },
@@ -94,18 +95,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <GoogleAnalyticsHead />
       </head>
       <body className={`${dmSans.variable} ${sourceSerif.variable} font-sans`} suppressHydrationWarning>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <GoogleAnalytics />
-        <Providers>
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,8 +1,27 @@
 {
   "redirects": [
-    { "source": "/about-us", "destination": "/about", "permanent": true },
-    { "source": "/about-us/", "destination": "/about", "permanent": true },
-    { "source": "/nios-admissions-delhi", "destination": "/nios-admission-delhi", "permanent": true },
-    { "source": "/nios-admissions-delhi/", "destination": "/nios-admission-delhi", "permanent": true }
+    { "source": "/", "destination": "/en", "permanent": false },
+    { "source": "/about", "destination": "/en/about", "permanent": true },
+    { "source": "/about/", "destination": "/en/about", "permanent": true },
+    { "source": "/services", "destination": "/en/services", "permanent": true },
+    { "source": "/services/", "destination": "/en/services", "permanent": true },
+    { "source": "/nios", "destination": "/en/nios", "permanent": true },
+    { "source": "/nios/", "destination": "/en/nios", "permanent": true },
+    { "source": "/nios-admission-delhi", "destination": "/en/nios-admission-delhi", "permanent": true },
+    { "source": "/nios-admission-delhi/", "destination": "/en/nios-admission-delhi", "permanent": true },
+    { "source": "/career-counselling", "destination": "/en/career-counselling", "permanent": true },
+    { "source": "/career-counselling/", "destination": "/en/career-counselling", "permanent": true },
+    { "source": "/entrance-exams", "destination": "/en/entrance-exams", "permanent": true },
+    { "source": "/entrance-exams/", "destination": "/en/entrance-exams", "permanent": true },
+    { "source": "/contact", "destination": "/en/contact", "permanent": true },
+    { "source": "/contact/", "destination": "/en/contact", "permanent": true },
+    { "source": "/about-us", "destination": "/en/about", "permanent": true },
+    { "source": "/about-us/", "destination": "/en/about", "permanent": true },
+    { "source": "/nios-admissions-delhi", "destination": "/en/nios-admission-delhi", "permanent": true },
+    { "source": "/nios-admissions-delhi/", "destination": "/en/nios-admission-delhi", "permanent": true },
+    { "source": "/career-counseling", "destination": "/en/career-counselling", "permanent": true },
+    { "source": "/career-counseling/", "destination": "/en/career-counselling", "permanent": true },
+    { "source": "/entrance-exam", "destination": "/en/entrance-exams", "permanent": true },
+    { "source": "/entrance-exam/", "destination": "/en/entrance-exams", "permanent": true }
   ]
 }
