@@ -59,12 +59,15 @@ ${urls}
 </urlset>
 `;
 
-const publicPath = path.join(process.cwd(), "public", "sitemap.xml");
-const outPath = path.join(process.cwd(), "out", "sitemap.xml");
+const files = ["sitemap-index.xml"];
 
-fs.writeFileSync(publicPath, xml, "utf8");
-if (fs.existsSync(path.join(process.cwd(), "out"))) {
-  fs.writeFileSync(outPath, xml, "utf8");
+for (const name of files) {
+  const publicPath = path.join(process.cwd(), "public", name);
+  fs.writeFileSync(publicPath, xml, "utf8");
+  const outPath = path.join(process.cwd(), "out", name);
+  if (fs.existsSync(path.join(process.cwd(), "out"))) {
+    fs.writeFileSync(outPath, xml, "utf8");
+  }
 }
 
-console.log("Wrote sitemap.xml to public/ and out/");
+console.log("Wrote sitemap-index.xml to public/ and out/");
