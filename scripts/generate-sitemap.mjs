@@ -61,18 +61,10 @@ ${urls}
 
 const publicPath = path.join(process.cwd(), "public", "sitemap.xml");
 const outPath = path.join(process.cwd(), "out", "sitemap.xml");
-const generatedDir = path.join(process.cwd(), "src", "generated");
-const generatedPath = path.join(generatedDir, "sitemap-xml.ts");
 
-fs.mkdirSync(generatedDir, { recursive: true });
 fs.writeFileSync(publicPath, xml, "utf8");
-fs.writeFileSync(
-  generatedPath,
-  `export const sitemapXml = ${JSON.stringify(xml)};\n`,
-  "utf8"
-);
 if (fs.existsSync(path.join(process.cwd(), "out"))) {
   fs.writeFileSync(outPath, xml, "utf8");
 }
 
-console.log("Wrote sitemap.xml to public/, out/, and src/generated/");
+console.log("Wrote sitemap.xml to public/ and out/");
