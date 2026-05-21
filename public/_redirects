@@ -1,6 +1,7 @@
-/sitemap.xml /urls.xml 301
-/ss-sitemap.xml /urls.xml 301
-/api/sitemap /urls.xml 301
+/sitemap.xml /site-urls 301
+/ss-sitemap.xml /site-urls 301
+/api/sitemap /site-urls 301
+/urls.xml /site-urls 301
 / /en 302
 /about /en/about 301
 /services /en/services 301

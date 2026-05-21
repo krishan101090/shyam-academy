@@ -1,8 +1,9 @@
 {
   "redirects": [
-    { "source": "/sitemap.xml", "destination": "/urls.xml", "permanent": true },
-    { "source": "/ss-sitemap.xml", "destination": "/urls.xml", "permanent": true },
-    { "source": "/api/sitemap", "destination": "/urls.xml", "permanent": true },
+    { "source": "/sitemap.xml", "destination": "/site-urls", "permanent": true },
+    { "source": "/ss-sitemap.xml", "destination": "/site-urls", "permanent": true },
+    { "source": "/api/sitemap", "destination": "/site-urls", "permanent": true },
+    { "source": "/urls.xml", "destination": "/site-urls", "permanent": true },
     { "source": "/", "destination": "/en", "permanent": false },
     { "source": "/about", "destination": "/en/about", "permanent": true },
     { "source": "/about/", "destination": "/en/about", "permanent": true },
