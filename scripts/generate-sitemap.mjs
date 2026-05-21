@@ -64,17 +64,19 @@ Allow: /
 User-Agent: Googlebot
 Allow: /
 
-Sitemap: ${siteUrl}/sitemap.xml
+Sitemap: ${siteUrl}/ss-sitemap.xml
 `;
 
 const root = process.cwd();
-fs.writeFileSync(path.join(root, "public", "sitemap.xml"), xml, "utf8");
-fs.writeFileSync(path.join(root, "public", "robots.txt"), robotsTxt, "utf8");
+const publicDir = path.join(root, "public");
 
-const sitemapTs = path.join(root, "src", "app", "sitemap.ts");
-if (fs.existsSync(sitemapTs)) fs.unlinkSync(sitemapTs);
+fs.writeFileSync(path.join(publicDir, "ss-sitemap.xml"), xml, "utf8");
+fs.writeFileSync(path.join(publicDir, "sitemap.xml"), xml, "utf8");
+fs.writeFileSync(path.join(publicDir, "robots.txt"), robotsTxt, "utf8");
 
-const sitemapIndex = path.join(root, "public", "sitemap-index.xml");
-if (fs.existsSync(sitemapIndex)) fs.unlinkSync(sitemapIndex);
+for (const name of ["sitemap.ts"]) {
+  const p = path.join(root, "src", "app", name);
+  if (fs.existsSync(p)) fs.unlinkSync(p);
+}
 
-console.log("Wrote public/sitemap.xml and public/robots.txt (no dynamic sitemap route)");
+console.log("Wrote public/ss-sitemap.xml, public/sitemap.xml, public/robots.txt");

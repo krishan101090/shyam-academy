@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/sitemap.xml", "destination": "/ss-sitemap.xml", "permanent": true },
     { "source": "/", "destination": "/en", "permanent": false },
     { "source": "/about", "destination": "/en/about", "permanent": true },
     { "source": "/about/", "destination": "/en/about", "permanent": true },
