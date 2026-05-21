@@ -7,7 +7,7 @@
     "dev": "WATCHPACK_POLLING=true next dev",
     "dev:clean": "npm run clean && WATCHPACK_POLLING=true next dev",
     "dev:3847": "npm run clean && WATCHPACK_POLLING=true next dev -p 3847",
-    "build": "node scripts/generate-sitemap.mjs && NEXT_PUBLIC_GA_MEASUREMENT_ID=G-SMFQVYZTZ8 next build && cp out/en.html out/index.html && node scripts/generate-sitemap.mjs",
+    "build": "node scripts/generate-sitemap.mjs && NEXT_PUBLIC_GA_MEASUREMENT_ID=G-SMFQVYZTZ8 next build && cp out/en.html out/index.html",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "preview": "npx --yes serve out -l 3000",
     "start": "npm run preview",

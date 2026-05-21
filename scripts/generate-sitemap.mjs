@@ -17,19 +17,18 @@ const paths = [
 const lastmod = new Date().toISOString();
 
 function absoluteUrl(locale, p) {
-  const base = p ? `${siteUrl}/${locale}${p}` : `${siteUrl}/${locale}`;
-  return base;
+  return p ? `${siteUrl}/${locale}${p}` : `${siteUrl}/${locale}`;
 }
 
 function hreflangLinks(p) {
   const en = absoluteUrl("en", p);
   const hi = absoluteUrl("hi", p);
   return [
-    ['x-default', en],
-    ['en', en],
-    ['en-IN', en],
-    ['hi', hi],
-    ['hi-IN', hi],
+    ["x-default", en],
+    ["en", en],
+    ["en-IN", en],
+    ["hi", hi],
+    ["hi-IN", hi],
   ]
     .map(
       ([lang, href]) =>
@@ -59,15 +58,23 @@ ${urls}
 </urlset>
 `;
 
-const files = ["sitemap-index.xml"];
+const robotsTxt = `User-Agent: *
+Allow: /
 
-for (const name of files) {
-  const publicPath = path.join(process.cwd(), "public", name);
-  fs.writeFileSync(publicPath, xml, "utf8");
-  const outPath = path.join(process.cwd(), "out", name);
-  if (fs.existsSync(path.join(process.cwd(), "out"))) {
-    fs.writeFileSync(outPath, xml, "utf8");
-  }
-}
+User-Agent: Googlebot
+Allow: /
 
-console.log("Wrote sitemap-index.xml to public/ and out/");
+Sitemap: ${siteUrl}/sitemap.xml
+`;
+
+const root = process.cwd();
+fs.writeFileSync(path.join(root, "public", "sitemap.xml"), xml, "utf8");
+fs.writeFileSync(path.join(root, "public", "robots.txt"), robotsTxt, "utf8");
+
+const sitemapTs = path.join(root, "src", "app", "sitemap.ts");
+if (fs.existsSync(sitemapTs)) fs.unlinkSync(sitemapTs);
+
+const sitemapIndex = path.join(root, "public", "sitemap-index.xml");
+if (fs.existsSync(sitemapIndex)) fs.unlinkSync(sitemapIndex);
+
+console.log("Wrote public/sitemap.xml and public/robots.txt (no dynamic sitemap route)");
