@@ -64,29 +64,16 @@ Allow: /
 User-Agent: Googlebot
 Allow: /
 
-Sitemap: ${siteUrl}/api/sitemap
+Sitemap: ${siteUrl}/urls.xml
 `;
 
 const root = process.cwd();
 const publicDir = path.join(root, "public");
-const generatedDir = path.join(root, "src", "generated");
 
-fs.mkdirSync(generatedDir, { recursive: true });
+fs.writeFileSync(path.join(publicDir, "urls.xml"), xml, "utf8");
 fs.writeFileSync(path.join(publicDir, "robots.txt"), robotsTxt, "utf8");
-fs.writeFileSync(
-  path.join(generatedDir, "sitemap-xml.ts"),
-  `export const sitemapXml = ${JSON.stringify(xml)};\n`,
-  "utf8"
-);
 
 const sitemapTs = path.join(root, "src", "app", "sitemap.ts");
 if (fs.existsSync(sitemapTs)) fs.unlinkSync(sitemapTs);
 
-try {
-  fs.unlinkSync(path.join(publicDir, "sitemap.xml"));
-} catch {}
-try {
-  fs.unlinkSync(path.join(publicDir, "ss-sitemap.xml"));
-} catch {}
-
-console.log("Wrote public/robots.txt and src/generated/sitemap-xml.ts");
+console.log("Wrote public/urls.xml and public/robots.txt");
