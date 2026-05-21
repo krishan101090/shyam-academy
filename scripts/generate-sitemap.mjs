@@ -4,58 +4,38 @@ import path from "path";
 const siteUrl = "https://shrishyamacademy.com";
 const locales = ["en", "hi"];
 const paths = [
-  { path: "", changeFrequency: "weekly", priority: "1.0" },
-  { path: "/nios-admission-delhi", changeFrequency: "weekly", priority: "0.98" },
-  { path: "/nios", changeFrequency: "weekly", priority: "0.9" },
-  { path: "/about", changeFrequency: "monthly", priority: "0.8" },
-  { path: "/services", changeFrequency: "monthly", priority: "0.8" },
-  { path: "/career-counselling", changeFrequency: "monthly", priority: "0.85" },
-  { path: "/entrance-exams", changeFrequency: "monthly", priority: "0.88" },
-  { path: "/contact", changeFrequency: "weekly", priority: "0.97" },
+  { path: "", changeFrequency: "weekly", priority: 1 },
+  { path: "/nios-admission-delhi", changeFrequency: "weekly", priority: 0.98 },
+  { path: "/nios", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/about", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/services", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/career-counselling", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/entrance-exams", changeFrequency: "monthly", priority: 0.88 },
+  { path: "/contact", changeFrequency: "weekly", priority: 0.97 },
 ];
 
-const lastmod = new Date().toISOString();
+const lastModified = new Date().toISOString();
 
 function absoluteUrl(locale, p) {
   return p ? `${siteUrl}/${locale}${p}` : `${siteUrl}/${locale}`;
 }
 
-function hreflangLinks(p) {
-  const en = absoluteUrl("en", p);
-  const hi = absoluteUrl("hi", p);
-  return [
-    ["x-default", en],
-    ["en", en],
-    ["en-IN", en],
-    ["hi", hi],
-    ["hi-IN", hi],
-  ]
-    .map(
-      ([lang, href]) =>
-        `    <xhtml:link rel="alternate" hreflang="${lang}" href="${href}" />`
-    )
-    .join("\n");
+const entries = locales.flatMap((locale) =>
+  paths.map(({ path, changeFrequency, priority }) => ({
+    url: absoluteUrl(locale, path),
+    lastModified,
+    changeFrequency,
+    priority,
+  }))
+);
+
+const sitemapTs = `import type { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return ${JSON.stringify(entries, null, 2)};
 }
-
-const urls = locales
-  .flatMap((locale) =>
-    paths.map(({ path, changeFrequency, priority }) => {
-      const loc = absoluteUrl(locale, path);
-      return `  <url>
-    <loc>${loc}</loc>
-${hreflangLinks(path)}
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${changeFrequency}</changefreq>
-    <priority>${priority}</priority>
-  </url>`;
-    })
-  )
-  .join("\n");
-
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${urls}
-</urlset>
 `;
 
 const robotsTxt = `User-Agent: *
@@ -64,19 +44,15 @@ Allow: /
 User-Agent: Googlebot
 Allow: /
 
-Sitemap: ${siteUrl}/urls.xml
+Sitemap: ${siteUrl}/sitemap.xml
 `;
 
 const root = process.cwd();
-const publicDir = path.join(root, "public");
+fs.writeFileSync(path.join(root, "src", "app", "sitemap.ts"), sitemapTs, "utf8");
+fs.writeFileSync(path.join(root, "public", "robots.txt"), robotsTxt, "utf8");
 
-fs.writeFileSync(path.join(publicDir, "urls.xml"), xml, "utf8");
-fs.writeFileSync(path.join(publicDir, "robots.txt"), robotsTxt, "utf8");
+try {
+  fs.unlinkSync(path.join(root, "public", "urls.xml"));
+} catch {}
 
-const appDir = path.join(root, "src", "app");
-for (const name of ["sitemap.ts", "robots.ts"]) {
-  const p = path.join(appDir, name);
-  if (fs.existsSync(p)) fs.unlinkSync(p);
-}
-
-console.log("Wrote public/urls.xml and public/robots.txt");
+console.log("Wrote src/app/sitemap.ts and public/robots.txt");

@@ -1,5 +1,3 @@
-/sitemap.xml /urls.xml 301
-/site-urls /urls.xml 301
 / /en 302
 /about /en/about 301
 /services /en/services 301
