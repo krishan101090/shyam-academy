@@ -4,4 +4,4 @@ Allow: /
 User-Agent: Googlebot
 Allow: /
 
-Sitemap: https://shrishyamacademy.com/ss-sitemap.xml
+Sitemap: https://shrishyamacademy.com/api/sitemap
