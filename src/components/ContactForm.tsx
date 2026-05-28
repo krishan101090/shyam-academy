@@ -1,6 +1,6 @@
 "use client";
 
-import { trackLead } from "@/lib/analytics";
+import { trackEvent, trackLead } from "@/lib/analytics";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { useState } from "react";
 
@@ -9,13 +9,18 @@ type FormState = "idle" | "loading" | "success" | "error";
 type ContactFormProps = {
   compact?: boolean;
   labels: Dictionary["form"];
+  initialInterest?: string;
+  source?: string;
 };
 
 const fieldClass =
   "mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white";
 
-export function ContactForm({ compact = false, labels }: ContactFormProps) {
+export function ContactForm({ compact = false, labels, initialInterest, source }: ContactFormProps) {
   const [state, setState] = useState<FormState>("idle");
+  const [interestValue, setInterestValue] = useState(
+    initialInterest && labels.interests.some((opt) => opt === initialInterest) ? initialInterest : ""
+  );
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -54,7 +59,10 @@ export function ContactForm({ compact = false, labels }: ContactFormProps) {
         return;
       }
       form.reset();
+      setInterestValue("");
       trackLead({ form: "contact", interest });
+      trackEvent("form_submit", { form_name: "lead_form", lead_interest: interest || "unspecified", lead_source: source || "contact_page" });
+      trackEvent("callback_request", { lead_interest: interest || "unspecified", lead_source: source || "contact_page" });
       setState("success");
     } catch {
       setState("error");
@@ -73,7 +81,14 @@ export function ContactForm({ compact = false, labels }: ContactFormProps) {
         <label htmlFor="interest" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
           {labels.interest}
         </label>
-        <select id="interest" name="interest" required className={fieldClass} defaultValue="">
+        <select
+          id="interest"
+          name="interest"
+          required
+          className={fieldClass}
+          value={interestValue}
+          onChange={(e) => setInterestValue(e.target.value)}
+        >
           <option value="" disabled>
             —
           </option>

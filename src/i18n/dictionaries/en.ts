@@ -259,6 +259,12 @@ export const en = {
     success: "Thank you — we will call you within 24 hours.",
     error: "Something went wrong. Please call +91 84485 37313.",
     interests: [
+      "Home Tuition",
+      "Economics Tuition",
+      "Accounts Tuition",
+      "CBSE/ICSE Home Tuition",
+      "CUET Coaching",
+      "Entrance Coaching After 12th",
       "NIOS 10th admission",
       "NIOS 12th admission",
       "NIOS 10th tuition",

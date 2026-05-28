@@ -11,8 +11,48 @@ const paths = [
   { path: "/services", changeFrequency: "monthly", priority: 0.8 },
   { path: "/career-counselling", changeFrequency: "monthly", priority: 0.85 },
   { path: "/entrance-exams", changeFrequency: "monthly", priority: 0.88 },
+  { path: "/entrance-after-12th", changeFrequency: "weekly", priority: 0.9 },
   { path: "/contact", changeFrequency: "weekly", priority: 0.97 },
+  { path: "/home-tuition", changeFrequency: "weekly", priority: 0.95 },
+  { path: "/home-tuition/north-delhi", changeFrequency: "weekly", priority: 0.92 },
+  { path: "/home-tuition/west-delhi", changeFrequency: "weekly", priority: 0.92 },
+  { path: "/subjects/economics-tuition", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/subjects/accounts-tuition", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/subjects/cbse-icse-home-tuition", changeFrequency: "weekly", priority: 0.88 },
 ];
+
+const areaPaths = [
+  "north-delhi/rohini",
+  "north-delhi/pitampura",
+  "north-delhi/shalimar-bagh",
+  "north-delhi/ashok-vihar",
+  "north-delhi/model-town",
+  "north-delhi/civil-lines",
+  "north-delhi/kamla-nagar",
+  "north-delhi/mukherjee-nagar",
+  "north-delhi/burari",
+  "north-delhi/hudson-lane",
+  "north-delhi/gtb-nagar",
+  "north-delhi/wazirabad",
+  "north-delhi/narela",
+  "north-delhi/alipur",
+  "north-delhi/majnu-ka-tila",
+  "west-delhi/janakpuri",
+  "west-delhi/rajouri-garden",
+  "west-delhi/punjabi-bagh",
+  "west-delhi/paschim-vihar",
+  "west-delhi/vikaspuri",
+  "west-delhi/uttam-nagar",
+  "west-delhi/tilak-nagar",
+  "west-delhi/dwarka",
+  "west-delhi/kirti-nagar",
+  "west-delhi/patel-nagar",
+  "west-delhi/subhash-nagar",
+  "west-delhi/tagore-garden",
+  "west-delhi/nangloi",
+  "west-delhi/peeragarhi",
+  "west-delhi/moti-nagar",
+].map((slug) => ({ path: `/home-tuition/${slug}`, changeFrequency: "weekly", priority: 0.86 }));
 
 const lastModified = new Date().toISOString();
 
@@ -21,7 +61,7 @@ function absoluteUrl(locale, p) {
 }
 
 const entries = locales.flatMap((locale) =>
-  paths.map(({ path, changeFrequency, priority }) => ({
+  [...paths, ...areaPaths].map(({ path, changeFrequency, priority }) => ({
     url: absoluteUrl(locale, path),
     lastModified,
     changeFrequency,

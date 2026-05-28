@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { TrackedAnchor } from "./TrackedAnchor";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -74,17 +75,24 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
             <p className="text-sm font-semibold text-slate-900 dark:text-white">{f.visit}</p>
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{f.address}</p>
             <p className="mt-2 text-sm">
-              <a className="font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400" href="tel:+918448537313">
+              <TrackedAnchor
+                className="font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400"
+                href="tel:+918448537313"
+                eventName="contact_click"
+                eventParams={{ contact_type: "phone", ui_section: "footer" }}
+              >
                 +91 84485 37313
-              </a>
+              </TrackedAnchor>
             </p>
             <p className="mt-2 text-sm">
-              <a
+              <TrackedAnchor
                 className="text-slate-600 underline decoration-slate-300 underline-offset-4 hover:text-brand-600 dark:text-slate-400"
                 href="mailto:contact@shrishyamacademy.com"
+                eventName="contact_click"
+                eventParams={{ contact_type: "email", ui_section: "footer" }}
               >
                 contact@shrishyamacademy.com
-              </a>
+              </TrackedAnchor>
             </p>
           </div>
         </div>

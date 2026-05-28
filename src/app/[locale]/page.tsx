@@ -6,6 +6,7 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
 import { LocaleLink } from "@/components/LocaleLink";
+import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -186,6 +187,57 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
+      <section className="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-semibold text-slate-900 dark:text-white">
+            Home Tuition in North Delhi & West Delhi
+          </h2>
+          <p className="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
+            Local home tutor support for Rohini, Pitampura, Shalimar Bagh, Janakpuri, Rajouri Garden, Paschim Vihar,
+            Dwarka, and many more areas. Strong focus on Economics and Accounts, plus CBSE/ICSE tuition for classes 1st
+            to 12th.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <TrackedLocaleLink
+              locale={locale}
+              href="/home-tuition/north-delhi"
+              eventName="cta_click"
+              eventParams={{ cta_name: "home_north_delhi" }}
+              className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              Home Tutor in North Delhi
+            </TrackedLocaleLink>
+            <TrackedLocaleLink
+              locale={locale}
+              href="/home-tuition/west-delhi"
+              eventName="cta_click"
+              eventParams={{ cta_name: "home_west_delhi" }}
+              className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              Home Tutor in West Delhi
+            </TrackedLocaleLink>
+            <TrackedLocaleLink
+              locale={locale}
+              href="/subjects/economics-tuition"
+              eventName="cta_click"
+              eventParams={{ cta_name: "home_economics_tuition" }}
+              className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              Economics Tuition
+            </TrackedLocaleLink>
+            <TrackedLocaleLink
+              locale={locale}
+              href="/subjects/accounts-tuition"
+              eventName="cta_click"
+              eventParams={{ cta_name: "home_accounts_tuition" }}
+              className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              Accounts Tuition
+            </TrackedLocaleLink>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
@@ -224,6 +276,15 @@ export default async function HomePage({ params }: PageProps) {
               <LocaleLink locale={locale} href="/entrance-exams" className="mt-4 inline-flex text-sm font-semibold text-brand-700 dark:text-brand-300">
                 {t.entranceLink} →
               </LocaleLink>
+              <TrackedLocaleLink
+                locale={locale}
+                href="/entrance-after-12th"
+                eventName="cta_click"
+                eventParams={{ cta_name: "home_entrance_after_12th" }}
+                className="mt-2 inline-flex text-sm font-semibold text-slate-800 hover:text-brand-700 dark:text-slate-200 dark:hover:text-brand-300"
+              >
+                Entrance Preparation After 12th →
+              </TrackedLocaleLink>
             </div>
           </div>
         </div>

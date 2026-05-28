@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { AnalyticsPageView } from "./AnalyticsPageView";
+import { AnalyticsInteractions } from "./AnalyticsInteractions";
 import { GA_MEASUREMENT_ID, isValidGaMeasurementId } from "@/lib/analytics";
 
 export function GoogleAnalyticsHead() {
@@ -24,6 +25,7 @@ export function GoogleAnalytics() {
   return (
     <Suspense fallback={null}>
       <AnalyticsPageView />
+      <AnalyticsInteractions />
     </Suspense>
   );
 }

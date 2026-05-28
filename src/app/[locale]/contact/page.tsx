@@ -9,7 +9,10 @@ import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
 import { L } from "@/lib/with-locale-links";
 import { ContactForm } from "@/components/ContactForm";
 
-type PageProps = { params: Promise<{ locale: string }> };
+type PageProps = {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ need?: string; source?: string }>;
+};
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: raw } = await params;
@@ -39,10 +42,11 @@ function AccordionItem({ title, children }: { title: string; children: ReactNode
   );
 }
 
-export default async function ContactPage({ params }: PageProps) {
+export default async function ContactPage({ params, searchParams }: PageProps) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
+  const query = await searchParams;
   const c = getContactContent(locale);
   const dict = getDictionary(locale);
   const pageUrl = `${siteUrl}${localePath(locale, "/contact")}`;
@@ -106,7 +110,7 @@ export default async function ContactPage({ params }: PageProps) {
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{c.formTitle}</h2>
                 <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{c.formHint}</p>
                 <div className="mt-4">
-                  <ContactForm compact labels={dict.form} />
+                  <ContactForm compact labels={dict.form} initialInterest={query.need} source={query.source} />
                 </div>
               </div>
             </aside>

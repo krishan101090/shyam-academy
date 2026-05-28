@@ -5,6 +5,7 @@ import { localePath } from "@/i18n/config";
 import Link from "next/link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
+import { TrackedAnchor } from "./TrackedAnchor";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -51,12 +52,14 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
         <div className="flex items-center gap-2">
           <LanguageSwitcher locale={locale} labels={dict.lang} />
           <ThemeToggle />
-          <a
+          <TrackedAnchor
             href="tel:+918448537313"
+            eventName="contact_click"
+            eventParams={{ contact_type: "phone", ui_section: "header" }}
             className="hidden rounded-lg bg-brand-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 sm:inline-flex"
           >
             {dict.nav.callNow}
-          </a>
+          </TrackedAnchor>
         </div>
       </div>
       <div className="border-t border-slate-100 px-4 pb-3 dark:border-slate-800 md:hidden">

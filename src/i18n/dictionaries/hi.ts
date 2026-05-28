@@ -264,6 +264,12 @@ export const hi = {
     success: "धन्यवाद — हम 24 घंटे के अंदर कॉल करेंगे।",
     error: "कुछ गलत हुआ। कृपया +91 84485 37313 पर कॉल करें।",
     interests: [
+      "Home Tuition",
+      "Economics Tuition",
+      "Accounts Tuition",
+      "CBSE/ICSE Home Tuition",
+      "CUET Coaching",
+      "Entrance Coaching After 12th",
       "NIOS 10वीं दाखिला",
       "NIOS 12वीं दाखिला",
       "NIOS 10वीं ट्यूशन",
