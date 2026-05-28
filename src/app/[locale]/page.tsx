@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { defaultLocale, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { hindiSeoKeywords } from "@/lib/seo-keywords";
+import { contactHref } from "@/lib/contact-context";
 import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
 import { LocaleLink } from "@/components/LocaleLink";
 import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
@@ -177,7 +178,7 @@ export default async function HomePage({ params }: PageProps) {
               </LocaleLink>
               <LocaleLink
                 locale={locale}
-                href="/contact"
+                href={contactHref("home-tuition")}
                 className="sm:col-span-2 inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               >
                 {t.tuitionEnquiry}
@@ -190,22 +191,22 @@ export default async function HomePage({ params }: PageProps) {
       <section className="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl font-semibold text-slate-900 dark:text-white">
-            Home Tuition in North Delhi & West Delhi
+            Pioneers in Accounts Classes — West Delhi
           </h2>
           <p className="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
-            Local home tutor support for Rohini, Pitampura, Shalimar Bagh, Janakpuri, Rajouri Garden, Paschim Vihar,
-            Dwarka, and many more areas. Strong focus on Economics and Accounts, plus CBSE/ICSE tuition for classes 1st
-            to 12th.
+            Class 11th & 12th Accounts specialist with Ajay Sir — 20+ years experience, best teacher in Paschim Vihar.
+            Home tuition and classroom batches at West Sagarpur, Gandhi Market. Plus home tutors across West Delhi for
+            Economics, CBSE/ICSE, and classes 1st to 12th.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrackedLocaleLink
               locale={locale}
-              href="/home-tuition/north-delhi"
+              href="/subjects/accounts"
               eventName="cta_click"
-              eventParams={{ cta_name: "home_north_delhi" }}
-              className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              eventParams={{ cta_name: "home_accounts_classes" }}
+              className="rounded-lg border border-brand-300 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-100 dark:border-brand-700 dark:bg-brand-950/50 dark:text-brand-100"
             >
-              Home Tutor in North Delhi
+              Accounts Classes with Ajay Sir
             </TrackedLocaleLink>
             <TrackedLocaleLink
               locale={locale}
@@ -218,7 +219,7 @@ export default async function HomePage({ params }: PageProps) {
             </TrackedLocaleLink>
             <TrackedLocaleLink
               locale={locale}
-              href="/subjects/economics-tuition"
+              href="/subjects/economics"
               eventName="cta_click"
               eventParams={{ cta_name: "home_economics_tuition" }}
               className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
@@ -227,12 +228,12 @@ export default async function HomePage({ params }: PageProps) {
             </TrackedLocaleLink>
             <TrackedLocaleLink
               locale={locale}
-              href="/subjects/accounts-tuition"
+              href="/home-tuition/west-delhi/paschim-vihar"
               eventName="cta_click"
-              eventParams={{ cta_name: "home_accounts_tuition" }}
+              eventParams={{ cta_name: "home_paschim_vihar" }}
               className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             >
-              Accounts Tuition
+              Home Tuition in Paschim Vihar
             </TrackedLocaleLink>
           </div>
         </div>

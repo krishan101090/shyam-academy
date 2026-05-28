@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
 import { pageAlternates, siteUrl } from "@/lib/seo";
+import { contactHref } from "@/lib/contact-context";
 import { additionalCourses, allAreaParams, coreSubjects, getArea, schoolCoverage, zoneLabels, type ZoneKey } from "@/lib/home-tuition-data";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { TrackedAnchor } from "@/components/TrackedAnchor";
 import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
@@ -54,18 +57,17 @@ export default async function AreaPage({ params }: PageProps) {
     },
   ];
 
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Home Tuition", href: "/home-tuition" },
+    { label: zoneLabels[zoneKey], href: `/home-tuition/${zoneKey}` },
+    { label: areaItem.name },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}${localePath(activeLocale, "/")}` },
-          { "@type": "ListItem", position: 2, name: "Home Tuition", item: `${siteUrl}${localePath(activeLocale, "/home-tuition")}` },
-          { "@type": "ListItem", position: 3, name: zoneLabels[zoneKey], item: `${siteUrl}${localePath(activeLocale, `/home-tuition/${zoneKey}`)}` },
-          { "@type": "ListItem", position: 4, name: areaItem.name, item: pageUrl },
-        ],
-      },
+      breadcrumbListSchema(activeLocale, siteUrl, breadcrumbItems, pagePath),
       {
         "@type": "Service",
         name: `Home Tuition in ${areaItem.name}`,
@@ -88,32 +90,9 @@ export default async function AreaPage({ params }: PageProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Breadcrumbs locale={activeLocale} items={breadcrumbItems} />
       <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <nav className="text-sm text-slate-600 dark:text-slate-400">
-          <ol className="flex flex-wrap items-center gap-2">
-            <li>
-              <TrackedLocaleLink locale={activeLocale} href="/home-tuition" eventName="cta_click" eventParams={{ cta_name: "breadcrumb_home_tuition" }} className="font-medium text-brand-700 dark:text-brand-400">
-                Home Tuition
-              </TrackedLocaleLink>
-            </li>
-            <li>/</li>
-            <li>
-              <TrackedLocaleLink
-                locale={activeLocale}
-                href={`/home-tuition/${zoneKey}`}
-                eventName="cta_click"
-                eventParams={{ cta_name: "breadcrumb_zone", zone: zoneKey }}
-                className="font-medium text-brand-700 dark:text-brand-400"
-              >
-                {zoneLabels[zoneKey]}
-              </TrackedLocaleLink>
-            </li>
-            <li>/</li>
-            <li className="text-slate-900 dark:text-slate-200">{areaItem.name}</li>
-          </ol>
-        </nav>
-
-        <h1 className="mt-4 font-display text-4xl font-semibold text-slate-900 dark:text-white">
+        <h1 className="font-display text-4xl font-semibold text-slate-900 dark:text-white">
           Best Home Tuition in {areaItem.name}, {zoneLabels[zoneKey]}
         </h1>
         <p className="mt-4 max-w-3xl text-slate-600 dark:text-slate-300">
@@ -121,10 +100,30 @@ export default async function AreaPage({ params }: PageProps) {
           support in Economics and Accounts, plus complete school tuition for CBSE/ICSE students.
         </p>
 
+        {(areaItem.slug === "paschim-vihar" || areaItem.slug === "west-sagarpur") && (
+          <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/70 p-5 dark:border-brand-800 dark:bg-brand-950/40">
+            <p className="text-sm font-semibold text-brand-900 dark:text-brand-100">
+              Pioneers in Accounts — Ajay Sir · 20+ years · Class 11th & 12th specialist
+            </p>
+            <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
+              Home tuition and classroom Accounts batches at West Sagarpur, Gandhi Market. Known as one of the best Accounts teachers in Paschim Vihar.
+            </p>
+            <TrackedLocaleLink
+              locale={activeLocale}
+              href="/subjects/accounts"
+              eventName="cta_click"
+              eventParams={{ cta_name: "area_accounts_classes", area: areaItem.slug }}
+              className="mt-4 inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+            >
+              View Accounts Classes with Ajay Sir
+            </TrackedLocaleLink>
+          </div>
+        )}
+
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <TrackedLocaleLink
             locale={activeLocale}
-            href={`/contact?need=Home Tuition&source=${encodeURIComponent(`area:${areaItem.slug}`)}`}
+            href={contactHref("home-tuition", { zone: zoneKey, area: areaItem.slug })}
             eventName="cta_click"
             eventParams={{ cta_name: "area_callback", area: areaItem.name }}
             className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700"
@@ -178,14 +177,14 @@ export default async function AreaPage({ params }: PageProps) {
         <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
           <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">Popular Internal Links</h2>
           <div className="mt-4 flex flex-wrap gap-3 text-sm">
-            <TrackedLocaleLink locale={activeLocale} href="/subjects/economics-tuition" eventName="cta_click" eventParams={{ cta_name: "internal_economics", area: areaItem.name }} className="rounded-full border border-slate-200 px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300">
+            <TrackedLocaleLink locale={activeLocale} href="/subjects/economics" eventName="cta_click" eventParams={{ cta_name: "internal_economics", area: areaItem.name }} className="rounded-full border border-slate-200 px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300">
               Economics Tuition
             </TrackedLocaleLink>
-            <TrackedLocaleLink locale={activeLocale} href="/subjects/accounts-tuition" eventName="cta_click" eventParams={{ cta_name: "internal_accounts", area: areaItem.name }} className="rounded-full border border-slate-200 px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300">
-              Accounts Tuition
+            <TrackedLocaleLink locale={activeLocale} href="/subjects/accounts" eventName="cta_click" eventParams={{ cta_name: "internal_accounts_classes", area: areaItem.name }} className="rounded-full border border-slate-200 px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300">
+              Accounts Classes (Ajay Sir)
             </TrackedLocaleLink>
-            <TrackedLocaleLink locale={activeLocale} href="/subjects/cbse-icse-home-tuition" eventName="cta_click" eventParams={{ cta_name: "internal_cbse_icse", area: areaItem.name }} className="rounded-full border border-slate-200 px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300">
-              CBSE/ICSE Home Tuition
+            <TrackedLocaleLink locale={activeLocale} href="/subjects" eventName="cta_click" eventParams={{ cta_name: "internal_subjects", area: areaItem.name }} className="rounded-full border border-slate-200 px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300">
+              All Subjects
             </TrackedLocaleLink>
             <TrackedLocaleLink locale={activeLocale} href="/entrance-after-12th" eventName="cta_click" eventParams={{ cta_name: "internal_entrance", area: areaItem.name }} className="rounded-full border border-slate-200 px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300">
               Entrance Coaching After 12th

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { L } from "@/lib/with-locale-links";
 import { LeadFormNios } from "@/components/LeadFormNios";
 import { hindiSeoKeywords } from "@/lib/seo-keywords";
+import { contactHref } from "@/lib/contact-context";
 import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -87,9 +90,13 @@ export default async function NiosAdmissionDelhiPage({ params }: PageProps) {
   const locale: Locale = raw;
   const pageUrl = `${siteUrl}${localePath(locale, "/nios-admission-delhi")}`;
 
+  const breadcrumbLabel = locale === "hi" ? "NIOS दाखिला दिल्ली" : "NIOS admission Delhi";
+  const breadcrumbItems = [{ label: "Home", href: "/" }, { label: breadcrumbLabel }];
+
   const jsonLdGraph = {
     "@context": "https://schema.org",
     "@graph": [
+      breadcrumbListSchema(locale, siteUrl, breadcrumbItems, "/nios-admission-delhi"),
       {
         "@type": "WebPage",
         url: pageUrl,
@@ -111,21 +118,7 @@ export default async function NiosAdmissionDelhiPage({ params }: PageProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }} />
-      <div className="border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="mx-auto max-w-6xl px-4 py-3 text-sm text-slate-600 dark:text-slate-400 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-2">
-              <li>
-                <L className="font-medium text-brand-700 hover:text-brand-800 dark:text-brand-400" locale={locale} href="/">
-                  Home
-                </L>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li className="text-slate-900 dark:text-slate-200">NIOS admission Delhi</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <Breadcrumbs locale={locale} items={breadcrumbItems} />
 
       <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-5 lg:gap-12">
@@ -144,7 +137,7 @@ export default async function NiosAdmissionDelhiPage({ params }: PageProps) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <L
                 locale={locale}
-                href="/contact"
+                href={contactHref("nios-admission")}
                 className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
               >
                 Enquire about admission
@@ -155,6 +148,13 @@ export default async function NiosAdmissionDelhiPage({ params }: PageProps) {
               >
                 Call +91 84485 37313
               </a>
+              <L
+                locale={locale}
+                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
+                href="/updates"
+              >
+                NIOS Delhi updates
+              </L>
               <L
                 locale={locale}
                 className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"

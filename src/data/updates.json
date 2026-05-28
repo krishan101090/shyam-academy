@@ -1,0 +1,85 @@
+{
+  "syncedAt": "2026-05-28T12:00:00.000Z",
+  "items": [
+    {
+      "id": "nios-delhi-admission-open-2024-25",
+      "title": "NIOS Delhi / NCR — Admission open for academic session 2024-25",
+      "summary": "Online admission guidance for Delhi NCR learners via NIOS Regional Centre Delhi (Sector-62, Noida).",
+      "url": "https://rcdelhi.nios.ac.in/",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "admission",
+      "publishedAt": "2024-08-01"
+    },
+    {
+      "id": "nios-delhi-notification-44-2021-stream-1-block-2-extension",
+      "title": "Notification 44/2021 dt. 15/03/2021 — Extension of Stream-1 Block-2 2020-21 admission",
+      "summary": "Extension notice for NIOS Stream-1 Block-2 admission (relevant for Delhi learners applying via SDMIS).",
+      "url": "https://rcdelhi.nios.ac.in/",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "admission",
+      "publishedAt": "2021-03-15"
+    },
+    {
+      "id": "nios-delhi-notification-7-2020-admission-last-date",
+      "title": "Notification 7/2020 dt. 25/09/2020 — Last date for admission (OBE, Vocational Block-1, Stream-2)",
+      "summary": "Last dates for Open Basic Education, vocational courses, and Stream-2 admission for session 2020-21.",
+      "url": "https://rcdelhi.nios.ac.in/",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "admission",
+      "publishedAt": "2020-09-25"
+    },
+    {
+      "id": "nios-delhi-notification-01-2022-tma-sdmis",
+      "title": "Notification 01/2022 dt. 07 Jan 2022 — TMA upload/download on SDMIS student portal",
+      "summary": "Secondary and Senior Secondary TMAs can be downloaded and uploaded via https://sdmis.nios.ac.in",
+      "url": "https://rcdelhi.nios.ac.in/",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "exam",
+      "publishedAt": "2022-01-07"
+    },
+    {
+      "id": "nios-delhi-notification-34-2024-exam-centres-oct-2024",
+      "title": "Notification-34/2024 dt. 09/07/2024 — Registration of exam centres for NIOS Oct-2024 public examination",
+      "summary": "Registration of examination centres for NIOS October 2024 public exams (Delhi / NCR learners).",
+      "url": "https://rcdelhi.nios.ac.in/regional-office.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "exam",
+      "publishedAt": "2024-07-09"
+    },
+    {
+      "id": "nios-delhi-circular-01-2024-sr-secondary-syllabus",
+      "title": "Circular-01/2024 dt. 25/04/2024 — Old and new syllabus for five Sr. Secondary subjects",
+      "summary": "Syllabus update circular for Class 12 (Senior Secondary) NIOS subjects.",
+      "url": "https://rcdelhi.nios.ac.in/regional-office.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2024-04-25"
+    },
+    {
+      "id": "nios-delhi-notification-48-2021-exam-fee-apr-may-2022",
+      "title": "Notification 48/2021 dt. 21/12/2021 — Examination fee for Secondary & Sr. Secondary April/May 2022",
+      "summary": "Examination fee notification for Class 10 and 12 NIOS board exams.",
+      "url": "https://rcdelhi.nios.ac.in/",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "exam",
+      "publishedAt": "2021-12-21"
+    },
+    {
+      "id": "nios-delhi-tamil-nadu-equivalency-order",
+      "title": "Order on equivalency of NIOS Class X and XII certificates for public employment",
+      "summary": "Government order regarding recognition of NIOS Secondary and Senior Secondary certificates.",
+      "url": "https://rcdelhi.nios.ac.in/regional-office.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2024-07-25"
+    }
+  ]
+}

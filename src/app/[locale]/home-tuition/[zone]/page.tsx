@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
+import { contactHref } from "@/lib/contact-context";
 import { pageAlternates, siteUrl } from "@/lib/seo";
 import { zoneAreas, zoneLabels, type ZoneKey } from "@/lib/home-tuition-data";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
 type PageProps = { params: Promise<{ locale: string; zone: string }> };
@@ -33,17 +36,16 @@ export default async function ZonePage({ params }: PageProps) {
   const areas = zoneAreas[zoneKey];
   const pagePath = `/home-tuition/${zoneKey}`;
   const pageUrl = `${siteUrl}${localePath(activeLocale, pagePath)}`;
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Home Tuition", href: "/home-tuition" },
+    { label: zoneLabels[zoneKey] },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}${localePath(activeLocale, "/")}` },
-          { "@type": "ListItem", position: 2, name: "Home Tuition", item: `${siteUrl}${localePath(activeLocale, "/home-tuition")}` },
-          { "@type": "ListItem", position: 3, name: zoneLabels[zoneKey], item: pageUrl },
-        ],
-      },
+      breadcrumbListSchema(activeLocale, siteUrl, breadcrumbItems, pagePath),
       {
         "@type": "ItemList",
         name: `Home Tuition Areas in ${zoneLabels[zoneKey]}`,
@@ -60,37 +62,24 @@ export default async function ZonePage({ params }: PageProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Breadcrumbs locale={activeLocale} items={breadcrumbItems} />
       <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <nav aria-label="Breadcrumb" className="text-sm text-slate-600 dark:text-slate-400">
-          <ol className="flex flex-wrap items-center gap-2">
-            <li>
-              <TrackedLocaleLink locale={activeLocale} href="/" eventName="cta_click" eventParams={{ cta_name: "breadcrumb_home" }} className="font-medium text-brand-700 dark:text-brand-400">
-                Home
-              </TrackedLocaleLink>
-            </li>
-            <li>/</li>
-            <li>
-              <TrackedLocaleLink
-                locale={activeLocale}
-                href="/home-tuition"
-                eventName="cta_click"
-                eventParams={{ cta_name: "breadcrumb_home_tuition" }}
-                className="font-medium text-brand-700 dark:text-brand-400"
-              >
-                Home Tuition
-              </TrackedLocaleLink>
-            </li>
-            <li>/</li>
-            <li className="text-slate-900 dark:text-slate-200">{zoneLabels[zoneKey]}</li>
-          </ol>
-        </nav>
-      <h1 className="font-display text-4xl font-semibold text-slate-900 dark:text-white">
+        <h1 className="font-display text-4xl font-semibold text-slate-900 dark:text-white">
         Home Tuition in {zoneLabels[zoneKey]}
       </h1>
       <p className="mt-4 max-w-3xl text-slate-600 dark:text-slate-300">
         Choose your locality to find the best home tutor in {zoneLabels[zoneKey]}. We provide private tutors for Economics,
         Accounts, CBSE/ICSE, and all major school subjects.
       </p>
+      <TrackedLocaleLink
+        locale={activeLocale}
+        href={contactHref("home-tuition", { zone: zoneKey })}
+        eventName="cta_click"
+        eventParams={{ cta_name: "zone_home_tuition_contact", zone: zoneKey }}
+        className="mt-6 inline-flex rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+      >
+        Enquire for home tuition in {zoneLabels[zoneKey]}
+      </TrackedLocaleLink>
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {areas.map((area) => (
           <TrackedLocaleLink

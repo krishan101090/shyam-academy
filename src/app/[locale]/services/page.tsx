@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { contactHref } from "@/lib/contact-context";
 import { pageAlternates } from "@/lib/seo";
 import { LocaleLink } from "@/components/LocaleLink";
 
@@ -44,7 +45,7 @@ export default async function ServicesPage({ params }: PageProps) {
           </LocaleLink>
           <LocaleLink
             locale={locale}
-            href="/contact"
+            href={contactHref("nios-admission")}
             className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800"
           >
             {t.ctaTuition}

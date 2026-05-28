@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
 import { getCareerContent } from "@/i18n/pages/career";
+import { contactHref } from "@/lib/contact-context";
 import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { L } from "@/lib/with-locale-links";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -26,9 +29,12 @@ export default async function CareerCounsellingPage({ params }: PageProps) {
   const c = getCareerContent(locale);
   const pageUrl = `${siteUrl}${localePath(locale, "/career-counselling")}`;
 
+  const breadcrumbItems = [{ label: c.home, href: "/" }, { label: c.breadcrumb }];
+
   const jsonLdGraph = {
     "@context": "https://schema.org",
     "@graph": [
+      breadcrumbListSchema(locale, siteUrl, breadcrumbItems, "/career-counselling"),
       {
         "@type": "WebPage",
         url: pageUrl,
@@ -50,21 +56,7 @@ export default async function CareerCounsellingPage({ params }: PageProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }} />
-      <div className="border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="mx-auto max-w-6xl px-4 py-3 text-sm sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-2 text-slate-600 dark:text-slate-400">
-              <li>
-                <L className="font-medium text-brand-700 dark:text-brand-400" locale={locale} href="/">
-                  {c.home}
-                </L>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li className="text-slate-900 dark:text-slate-200">{c.breadcrumb}</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <Breadcrumbs locale={locale} items={breadcrumbItems} />
 
       <article>
         <header className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white dark:border-slate-800 dark:from-slate-900 dark:to-slate-950">
@@ -73,7 +65,7 @@ export default async function CareerCounsellingPage({ params }: PageProps) {
             <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-slate-900 text-balance dark:text-white sm:text-5xl">{c.title}</h1>
             <p className="lead-summary mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">{c.lead}</p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <L locale={locale} href="/contact#lead-form" className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700">
+              <L locale={locale} href={contactHref("career-counselling", { hash: "lead-form" })} className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700">
                 {c.ctaForm}
               </L>
               <a href="tel:+918448537313" className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
@@ -151,10 +143,10 @@ export default async function CareerCounsellingPage({ params }: PageProps) {
             <h2 className="font-display text-2xl font-semibold text-slate-900 dark:text-white">{c.ctaTitle}</h2>
             <p className="mx-auto mt-3 max-w-xl text-slate-600 dark:text-slate-400">{c.ctaLead}</p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <L href="/contact#lead-form" locale={locale} className="inline-flex rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700">
+              <L href={contactHref("career-counselling", { hash: "lead-form" })} locale={locale} className="inline-flex rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700">
                 {c.ctaEnquire}
               </L>
-              <L href="/contact" locale={locale} className="inline-flex rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
+              <L href={contactHref("career-counselling")} locale={locale} className="inline-flex rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white">
                 {c.ctaFull}
               </L>
             </div>

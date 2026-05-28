@@ -55,8 +55,28 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                 </Link>
               </li>
               <li>
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/subjects")}>
+                  {f.subjects}
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/home-tuition")}>
+                  {dict.nav.homeTuition}
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/entrance-after-12th")}>
+                  {dict.nav.entranceAfter12}
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/nios-admission-delhi")}>
                   {f.niosAdmission}
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-brand-600 dark:hover:text-brand-400" href={localePath(locale, "/updates")}>
+                  {f.niosUpdates}
                 </Link>
               </li>
               <li>

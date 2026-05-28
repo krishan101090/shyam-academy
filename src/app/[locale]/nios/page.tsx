@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { contactHref } from "@/lib/contact-context";
 import { pageAlternates } from "@/lib/seo";
 import { LocaleLink } from "@/components/LocaleLink";
 
@@ -43,7 +44,7 @@ export default async function NiosPage({ params }: PageProps) {
           <LocaleLink
             className="inline-flex items-center justify-center rounded-lg border border-brand-200 bg-white px-4 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-100 dark:border-brand-900/50 dark:bg-slate-950 dark:text-brand-50 dark:hover:bg-slate-900"
             locale={locale}
-            href="/contact"
+            href={contactHref("nios-admission")}
           >
             {t.bannerContact}
           </LocaleLink>

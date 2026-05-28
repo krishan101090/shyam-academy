@@ -2,7 +2,7 @@
 
 import { trackEvent, trackLead } from "@/lib/analytics";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -22,6 +22,12 @@ export function ContactForm({ compact = false, labels, initialInterest, source }
     initialInterest && labels.interests.some((opt) => opt === initialInterest) ? initialInterest : ""
   );
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+  useEffect(() => {
+    if (initialInterest && labels.interests.some((opt) => opt === initialInterest)) {
+      setInterestValue(initialInterest);
+    }
+  }, [initialInterest, labels.interests]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
