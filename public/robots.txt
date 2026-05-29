@@ -1,7 +1,14 @@
 User-Agent: *
+
 Allow: /
+
+
 
 User-Agent: Googlebot
+
 Allow: /
 
+
+
 Sitemap: https://shrishyamacademy.com/sitemap.xml
+

@@ -1,85 +1,405 @@
 {
-  "syncedAt": "2026-05-28T12:00:00.000Z",
+  "syncedAt": "2026-05-29T06:38:57.527Z",
   "items": [
     {
-      "id": "nios-delhi-admission-open-2024-25",
-      "title": "NIOS Delhi / NCR — Admission open for academic session 2024-25",
-      "summary": "Online admission guidance for Delhi NCR learners via NIOS Regional Centre Delhi (Sector-62, Noida).",
-      "url": "https://rcdelhi.nios.ac.in/",
+      "id": "nios-delhi-latest-updates",
+      "title": "Latest Updates",
+      "summary": "Latest Updates",
+      "url": "https://rcdelhi.nios.ac.in/page/notification.html",
       "source": "NIOS Regional Centre Delhi / NCR",
       "sourceId": "nios-delhi",
-      "category": "admission",
-      "publishedAt": "2024-08-01"
+      "category": "news",
+      "publishedAt": "2026-05-29"
     },
     {
-      "id": "nios-delhi-notification-44-2021-stream-1-block-2-extension",
-      "title": "Notification 44/2021 dt. 15/03/2021 — Extension of Stream-1 Block-2 2020-21 admission",
-      "summary": "Extension notice for NIOS Stream-1 Block-2 admission (relevant for Delhi learners applying via SDMIS).",
-      "url": "https://rcdelhi.nios.ac.in/",
+      "id": "nios-delhi-04-2023-indicative-vacancy-notification-nios-rc-04-2023-for-various-g",
+      "title": "(विभिन्न ग्रुप-ए, बी और सी पदों के लिए सांकेतिक रिक्ति अधिसूचना (एनआईओएस/आरसी/04/2023)) (INDICATIVE VACANCY NOTIFICATION (NIOS/RC/04/2023) FOR VARIOUS GROUP-A,B & C POSTS)",
+      "summary": "(विभिन्न ग्रुप-ए, बी और सी पदों के लिए सांकेतिक रिक्ति अधिसूचना (एनआईओएस/आरसी/04/2023)) (INDICATIVE VACANCY NOTIFICATION (NIOS/RC/04/2023) FOR VARIOUS GROUP-…",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/indicative-vacancy-notification-niosrc042023-for-various-group-ab-c-posts-2.html",
       "source": "NIOS Regional Centre Delhi / NCR",
       "sourceId": "nios-delhi",
-      "category": "admission",
-      "publishedAt": "2021-03-15"
+      "category": "notice",
+      "publishedAt": "2026-05-29"
     },
     {
-      "id": "nios-delhi-notification-7-2020-admission-last-date",
-      "title": "Notification 7/2020 dt. 25/09/2020 — Last date for admission (OBE, Vocational Block-1, Stream-2)",
-      "summary": "Last dates for Open Basic Education, vocational courses, and Stream-2 admission for session 2020-21.",
-      "url": "https://rcdelhi.nios.ac.in/",
-      "source": "NIOS Regional Centre Delhi / NCR",
-      "sourceId": "nios-delhi",
-      "category": "admission",
-      "publishedAt": "2020-09-25"
-    },
-    {
-      "id": "nios-delhi-notification-01-2022-tma-sdmis",
-      "title": "Notification 01/2022 dt. 07 Jan 2022 — TMA upload/download on SDMIS student portal",
-      "summary": "Secondary and Senior Secondary TMAs can be downloaded and uploaded via https://sdmis.nios.ac.in",
-      "url": "https://rcdelhi.nios.ac.in/",
+      "id": "nios-delhi-peace-rally-on-150th-birth-anniversary-of-mahatma-gandhi",
+      "title": "Peace Rally on 150th birth anniversary of Mahatma Gandhi",
+      "summary": "Peace Rally on 150th birth anniversary of Mahatma Gandhi",
+      "url": "https://rcdelhi.nios.ac.in/post/events/peace-rally-on-150th-birth-anniversary-of-mahatma-gandhi.html",
       "source": "NIOS Regional Centre Delhi / NCR",
       "sourceId": "nios-delhi",
       "category": "exam",
-      "publishedAt": "2022-01-07"
+      "publishedAt": "2026-05-29"
     },
     {
-      "id": "nios-delhi-notification-34-2024-exam-centres-oct-2024",
-      "title": "Notification-34/2024 dt. 09/07/2024 — Registration of exam centres for NIOS Oct-2024 public examination",
-      "summary": "Registration of examination centres for NIOS October 2024 public exams (Delhi / NCR learners).",
-      "url": "https://rcdelhi.nios.ac.in/regional-office.html",
+      "id": "nios-delhi-tender-for-award-the-contract-of-comprehensive-amc-of-network-managem",
+      "title": "Tender for award the contract of Comprehensive AMC of Network Management, Computer, Printer and Scanner of NIOS premises at A-24/25, Sector-62, NOIDA-201309 & CWC, Sahibabad-201007.",
+      "summary": "Tender for award the contract of Comprehensive AMC of Network Management, Computer, Printer and Scanner of NIOS premises at A-24/25, Sector-62, NOIDA-201309 …",
+      "url": "https://rcdelhi.nios.ac.in/post/tender/tender-for-award-the-contract-of-comprehensive-amc-of-network-management-computer-printer-and-scanner-of-nios-premises-at-a-2425-sector-62-noida-201309-cwc-sahibabad-201007.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "notice",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-tender-for-procurement-printing-supply-and-dispatch-of-answer-books-f",
+      "title": "TENDER FOR PROCUREMENT,PRINTING, SUPPLY AND DISPATCH OF ANSWER BOOKS FOR 2021 EXAMINATIONS",
+      "summary": "TENDER FOR PROCUREMENT,PRINTING, SUPPLY AND DISPATCH OF ANSWER BOOKS FOR 2021 EXAMINATIONS",
+      "url": "https://rcdelhi.nios.ac.in/post/tender/tender-for-procurementprinting-supply-and-dispatch-of-answer-books-for-2021-examinations.html",
       "source": "NIOS Regional Centre Delhi / NCR",
       "sourceId": "nios-delhi",
       "category": "exam",
-      "publishedAt": "2024-07-09"
+      "publishedAt": "2026-05-29"
     },
     {
-      "id": "nios-delhi-circular-01-2024-sr-secondary-syllabus",
-      "title": "Circular-01/2024 dt. 25/04/2024 — Old and new syllabus for five Sr. Secondary subjects",
-      "summary": "Syllabus update circular for Class 12 (Senior Secondary) NIOS subjects.",
+      "id": "nios-delhi-tender-for-mechanized-housekeeping-services-in-the-national-institute",
+      "title": "Tender for Mechanized Housekeeping Services in the National Institute of Open Schooling (HQ) building, A-24-25, Sector-62, Noida, NIOS Regional Centre building, Guest House A-31,Sector-62, Noida and NIOS Book Store at CWC, Sahibabad, U.P.",
+      "summary": "Tender for Mechanized Housekeeping Services in the National Institute of Open Schooling (HQ) building, A-24-25, Sector-62, Noida, NIOS Regional Centre buildi…",
+      "url": "https://rcdelhi.nios.ac.in/post/tender/tender-for-mechanized-housekeeping-services-in-the-national-institute-of-open-schooling-hq-building-a-24-25-sector-62-noida-nios-regional-centre-building-guest-house-a-31sector-62-noida-and-nios-book-store-at-cwc-sahibabad-up.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "notice",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-notice-regarding-recruitment-to-the-post-of-director-evaluation",
+      "title": "Notice regarding Recruitment to the post of Director (Evaluation)",
+      "summary": "Notice regarding Recruitment to the post of Director (Evaluation)",
+      "url": "https://rcdelhi.nios.ac.in/post/vacancy/notice-regarding-recruitment-to-the-post-of-director-evaluation.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "notice",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-notice-regarding-the-list-of-candidates-for-the-post-of-assistant-dir",
+      "title": "Notice regarding the list of candidates for the post of Assistant Director (Admn.)",
+      "summary": "Notice regarding the list of candidates for the post of Assistant Director (Admn.)",
+      "url": "https://rcdelhi.nios.ac.in/post/vacancy/notice-regarding-the-list-of-candidates-for-the-post-of-assistant-director-admn.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-prof-akhilesh-mishra-and-nbsp-chairman",
+      "title": "Prof. Akhilesh Mishra &nbsp;Chairman",
+      "summary": "Prof. Akhilesh Mishra &nbsp;Chairman",
+      "url": "https://rcdelhi.nios.ac.in/page/chairpersons-message.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-notification-01-2022-dt-07-jan-2022-regarding-provision-for-downloadi",
+      "title": "Notification 01/2022 dt. 07 Jan, 2022 regarding Provision for downloading/uploading TMAs (Secondary/ Sr.Secondary) from the student portal of NIOS (https://sdmis.nios.ac.in)",
+      "summary": "Notification 01/2022 dt. 07 Jan, 2022 regarding Provision for downloading/uploading TMAs (Secondary/ Sr.Secondary) from the student portal of NIOS (https://s…",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/notification-012022-dt-07-jan-2022-regarding-provision-for-downloadinguploading-tmas-secondary-srsecondary-from-the-student-portal-of-nios-httpssdmisniosacin.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "admission",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-on-line-admission-of-stream-2-for-academic-session-2020-21-is-started",
+      "title": "On-line Admission of Stream -2 for Academic session 2020-21 is started",
+      "summary": "On-line Admission of Stream -2 for Academic session 2020-21 is started",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/on-line-admission-of-stream-2-for-academic-session-2020-21-is-started.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "admission",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-date-sheet-for-vocational-courses-and-d-el-ed-offline-examinations-fe",
+      "title": "Date Sheet For VOCATIONAL Courses & D.El.ED. (OFFLINE) Examinations (February-March 2021)",
+      "summary": "Date Sheet For VOCATIONAL Courses & D.El.ED. (OFFLINE) Examinations (February-March 2021)",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/date-sheet-for-vocational-courses-deled-offline-examinations-february-march-2021.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "exam",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-date-sheet-for-secondary-class-x-sr-secondary-class-xii-examinations-",
+      "title": "Date Sheet for Secondary (Class-X)/ Sr.Secondary (Class-XII) Examinations, January-February, 2021 for For Over Seas Exam. Centres",
+      "summary": "Date Sheet for Secondary (Class-X)/ Sr.Secondary (Class-XII) Examinations, January-February, 2021 for For Over Seas Exam. Centres",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/date-sheet-for-secondary-class-x-srsecondary-class-xii-examinations-january-february-2021-for-for-over-seas-exam-centres.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "exam",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-circular-dt-13th-november-2020-regarding-all-regular-staff-of-nios-wi",
+      "title": "Circular dt. 13th November, 2020 regarding all regular staff of NIOS will attend office physically.",
+      "summary": "Circular dt. 13th November, 2020 regarding all regular staff of NIOS will attend office physically.",
+      "url": "https://rcdelhi.nios.ac.in/post/events/circular-dt-13th-november-2020-regarding-all-regular-staff-of-nios-will-attend-office-physically.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-cirular-18-2020-dt-29-sept-2020-regarding-meritorious-incentive-schem",
+      "title": "Cirular 18/2020 dt.29 Sept.2020 regarding Meritorious Incentive Scheme for the meritorious wards of NIOS regular employees",
+      "summary": "Cirular 18/2020 dt.29 Sept.2020 regarding Meritorious Incentive Scheme for the meritorious wards of NIOS regular employees",
+      "url": "https://rcdelhi.nios.ac.in/post/events/cicular-182020-dt29-sept2020-regarding-meritorious-incentive-scheme-for-the-meritorious-wards-of-nios-regular-employees.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-notification-67-2021-dt-3-dec-2021-regarding-pandit-deen-dayal-upadhy",
+      "title": "Notification 67/2021 dt.3 Dec,2021 regarding Pandit Deen Dayal Upadhyay Mukta Vidya Honour for rendering services in the field of Open and Distance Learing (ODL)",
+      "summary": "Notification 67/2021 dt.3 Dec,2021 regarding Pandit Deen Dayal Upadhyay Mukta Vidya Honour for rendering services in the field of Open and Distance Learing (…",
+      "url": "https://rcdelhi.nios.ac.in/post/study-centre-notice/notification-672021-dt3-dec2021-regarding-pandit-deen-dayal-upadhyay-mukta-vidya-honour-for-rendering-services-in-the-field-of-open-and-distance-learing-odl.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-vocation-notice",
+      "title": "Vocation Notice",
+      "summary": "Vocation Notice",
+      "url": "https://rcdelhi.nios.ac.in/post/study-centre-notice/vocation-notice.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-notification-66-2021-dt-3-dec-2021-regarding-enhanced-accreditation-f",
+      "title": "Notification 66/2021 dt.3 Dec,2021 regarding Enhanced Accreditation fee for Academic courses (Secondary & Senior Secondary)",
+      "summary": "Notification 66/2021 dt.3 Dec,2021 regarding Enhanced Accreditation fee for Academic courses (Secondary & Senior Secondary)",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/notification-662021-dt3-dec2021-regarding-enhanced-accreditation-fee-for-academic-courses-secondary-senior-secondary.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-nios-receives-the-national-awards-for-the-empowerment-of-persons-with",
+      "title": "NIOS receives the National Awards for the Empowerment of Persons with Disabilities 222",
+      "summary": "NIOS receives the National Awards for the Empowerment of Persons with Disabilities 222",
+      "url": "https://rcdelhi.nios.ac.in/post/awards-achievements/nios-receives-the-national-awards-for-the-empowerment-of-persons-with-disabilities-222.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-video-gallery",
+      "title": "Video Gallery",
+      "summary": "Video Gallery",
+      "url": "https://rcdelhi.nios.ac.in/video-gallery.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-photo-gallery",
+      "title": "Photo Gallery",
+      "summary": "Photo Gallery",
+      "url": "https://rcdelhi.nios.ac.in/photo-gallery.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-legal-section",
+      "title": "Legal Section",
+      "summary": "Legal Section",
+      "url": "https://rcdelhi.nios.ac.in/legal-section.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-cancellation-and-refund-policy",
+      "title": "Cancellation & Refund Policy",
+      "summary": "Cancellation & Refund Policy",
+      "url": "https://rcdelhi.nios.ac.in/cancellation-of-admission-refund-policy.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-proud-learners-of-nios",
+      "title": "Proud Learners Of NIOS",
+      "summary": "Proud Learners Of NIOS",
+      "url": "https://rcdelhi.nios.ac.in/proud-learners-of-nios.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-conference-and-workshops",
+      "title": "Conference & Workshops",
+      "summary": "Conference & Workshops",
+      "url": "https://rcdelhi.nios.ac.in/conference-workshops.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-articles-papers-research-projects",
+      "title": "Articles/Papers/Research Projects",
+      "summary": "Articles/Papers/Research Projects",
+      "url": "https://rcdelhi.nios.ac.in/articles-projects.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-statistical-report",
+      "title": "Statistical Report",
+      "summary": "Statistical Report",
+      "url": "https://rcdelhi.nios.ac.in/statistical-report-2.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-provisions-for-learners-with-disability",
+      "title": "Provisions For Learners With Disability",
+      "summary": "Provisions For Learners With Disability",
+      "url": "https://rcdelhi.nios.ac.in/provisions-for-learners-with-disability.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-terms-and-conditions",
+      "title": "Terms & Conditions",
+      "summary": "Terms & Conditions",
+      "url": "https://rcdelhi.nios.ac.in/terms-conditions.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-privacy-policy",
+      "title": "Privacy Policy",
+      "summary": "Privacy Policy",
+      "url": "https://rcdelhi.nios.ac.in/privacy-policy.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-nios-regional-staff-contact-details",
+      "title": "NIOS Regional Staff Contact Details",
+      "summary": "NIOS Regional Staff Contact Details",
+      "url": "https://rcdelhi.nios.ac.in/Staff-Contact-Details.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-regional-office",
+      "title": "Regional Office",
+      "summary": "Regional Office",
       "url": "https://rcdelhi.nios.ac.in/regional-office.html",
       "source": "NIOS Regional Centre Delhi / NCR",
       "sourceId": "nios-delhi",
       "category": "news",
-      "publishedAt": "2024-04-25"
+      "publishedAt": "2026-05-29"
     },
     {
-      "id": "nios-delhi-notification-48-2021-exam-fee-apr-may-2022",
-      "title": "Notification 48/2021 dt. 21/12/2021 — Examination fee for Secondary & Sr. Secondary April/May 2022",
-      "summary": "Examination fee notification for Class 10 and 12 NIOS board exams.",
-      "url": "https://rcdelhi.nios.ac.in/",
-      "source": "NIOS Regional Centre Delhi / NCR",
-      "sourceId": "nios-delhi",
-      "category": "exam",
-      "publishedAt": "2021-12-21"
-    },
-    {
-      "id": "nios-delhi-tamil-nadu-equivalency-order",
-      "title": "Order on equivalency of NIOS Class X and XII certificates for public employment",
-      "summary": "Government order regarding recognition of NIOS Secondary and Senior Secondary certificates.",
-      "url": "https://rcdelhi.nios.ac.in/regional-office.html",
+      "id": "nios-delhi-study-centres",
+      "title": "Study Centres",
+      "summary": "Study Centres",
+      "url": "https://rcdelhi.nios.ac.in/.html",
       "source": "NIOS Regional Centre Delhi / NCR",
       "sourceId": "nios-delhi",
       "category": "news",
-      "publishedAt": "2024-07-25"
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-ask-your-teacher",
+      "title": "Ask Your Teacher",
+      "summary": "Ask Your Teacher",
+      "url": "https://rcdelhi.nios.ac.in/ask-your-teacher.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-order-issued-by-government-of-tamil-nadu-regarding-equivalency-of-the",
+      "title": "Order issued by Government of Tamil Nadu regarding equivalency of the Academic Programme of NIOS Class X and XII Certificate for the purpose of Employment in Public Services / Promotion.",
+      "summary": "Order issued by Government of Tamil Nadu regarding equivalency of the Academic Programme of NIOS Class X and XII Certificate for the purpose of Employment in…",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/order-issued-by-government-of-tamil-nadu-regarding-equivalency-of-the-academic-programme-of-nios-class-x-and-xii-certificate-for-the-purpose-of-employment-in-public-services-promotion.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-result-of-d-el-ed-2017-19-session-nc-cases-has-been-declared-on-the-o",
+      "title": "Result of D.El.Ed (2017-19) session NC cases has been declared on the official portal of NIOS",
+      "summary": "Result of D.El.Ed (2017-19) session NC cases has been declared on the official portal of NIOS",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/result-of-deled-2017-19-session-nc-cases-has-been-declared-on-the-official-portal-of-nios-ie-httpsdledniosacin.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-notification-10-2022-regarding-the-last-date-online-admisssion-of-str",
+      "title": "Notification 10/2022 regarding the last date online admisssion of stream I (Block II) has extended upto 31 st March 2022",
+      "summary": "Notification 10/2022 regarding the last date online admisssion of stream I (Block II) has extended upto 31 st March 2022",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/notification-102022-regarding-the-last-date-online-admisssion-of-stream-1-block-11-has-extended-upto-31-st-march-2022.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "news",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-booking-and-dispatch-of-post-examination-materials-pertaining-to-the-",
+      "title": "Booking and Dispatch of Post Examination materials pertaining to the On Demand Examination(ODE) of National Institute of Open Schooling (NIOS) w.e.f 04th January, 2022",
+      "summary": "Booking and Dispatch of Post Examination materials pertaining to the On Demand Examination(ODE) of National Institute of Open Schooling (NIOS) w.e.f 04th Jan…",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/booking-and-dispatch-of-post-examination-materials-pertaining-to-the-on-demand-examinationode-of-national-institute-of-open-schooling-nios-wef-04th-january-2022.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "exam",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-vocational-and-d-el-ed-offline-booking-and-dispatch-of-post-examinati",
+      "title": "Vocational and D.El.ED(Offline) Booking and dispatch of Post Examination materials of National Institute of Open Schooling (NIOS) Examination from 03rd January, 2022",
+      "summary": "Vocational and D.El.ED(Offline) Booking and dispatch of Post Examination materials of National Institute of Open Schooling (NIOS) Examination from 03rd Janua…",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/vocational-and-deledoffline-booking-and-dispatch-of-post-examination-materials-of-national-institute-of-open-schooling-nios-examination-from-03rd-january-2022.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "exam",
+      "publishedAt": "2026-05-29"
+    },
+    {
+      "id": "nios-delhi-notification-65-2021-dt-30-nov-2021-regarding-online-registration-for",
+      "title": "Notification 65/2021 dt. 30 Nov.,2021 regarding Online Registration for the Secondary and Sr.Secondary Courses Stream-1 (Block-II) Academic Session 2021-22 and Vocational Courses 2021 for Oct/Nov,2022 examination.",
+      "summary": "Notification 65/2021 dt. 30 Nov.,2021 regarding Online Registration for the Secondary and Sr.Secondary Courses Stream-1 (Block-II) Academic Session 2021-22 a…",
+      "url": "https://rcdelhi.nios.ac.in/post/notices/notification-652021-dt-30-nov2021-regarding-online-registration-for-the-secondary-and-srsecondary-courses-stream-1-block-ii-academic-session-2021-22-and-vocational-courses-2021-for-octnov2022-examination.html",
+      "source": "NIOS Regional Centre Delhi / NCR",
+      "sourceId": "nios-delhi",
+      "category": "admission",
+      "publishedAt": "2026-05-29"
     }
   ]
 }
