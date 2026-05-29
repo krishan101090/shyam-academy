@@ -14,16 +14,15 @@ export const revalidate = 86400;
 
 type PageProps = { params: Promise<{ locale: string; slug: string }> };
 
-export async function generateStaticParams() {
-  const { items } = await getAllUpdates();
+export function generateStaticParams() {
+  const { items } = getAllUpdates();
   return (["en", "hi"] as const).flatMap((locale) => items.map((item) => ({ locale, slug: item.id })));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: raw, slug } = await params;
   if (!isLocale(raw)) return {};
-  const { items } = await getAllUpdates();
-  const item = getUpdateById(items, slug);
+  const item = getUpdateById(slug);
   if (!item) return {};
   return {
     title: `${item.title} | Shri Shyam Academy`,
@@ -38,8 +37,7 @@ export default async function UpdateDetailPage({ params }: PageProps) {
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
   const c = getUpdatesContent(locale);
-  const { items } = await getAllUpdates();
-  const item = getUpdateById(items, slug);
+  const item = getUpdateById(slug);
   if (!item) notFound();
 
   const labels = categoryLabels[locale];

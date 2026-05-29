@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
 import { getUpdatesContent } from "@/i18n/pages/updates";
@@ -8,22 +9,12 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 import { TrackedAnchor } from "@/components/TrackedAnchor";
-import {
-  categoryLabels,
-  filterUpdates,
-  formatUpdateDate,
-  getAllUpdates,
-} from "@/lib/updates";
-import type { UpdateCategory } from "@/lib/updates-types";
+import { UpdatesFeed } from "@/components/UpdatesFeed";
+import { getAllUpdates } from "@/lib/updates";
 
 export const revalidate = 86400;
 
-type PageProps = {
-  params: Promise<{ locale: string }>;
-  searchParams: Promise<{ category?: string }>;
-};
-
-const validCategories = new Set(["all", "admission", "exam", "notice", "news"]);
+type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: raw } = await params;
@@ -37,18 +28,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function UpdatesPage({ params, searchParams }: PageProps) {
+export default async function UpdatesPage({ params }: PageProps) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
-  const query = await searchParams;
-  const category = validCategories.has(query.category ?? "") ? (query.category as UpdateCategory | "all") : "all";
   const c = getUpdatesContent(locale);
-  const { items: allItems, syncedAt } = await getAllUpdates();
-  const items = filterUpdates(allItems, category);
-  const labels = categoryLabels[locale];
-  const pagePath = category === "all" ? "/updates" : `/updates?category=${category}`;
-  const pageUrl = `${siteUrl}${localePath(locale, pagePath)}`;
+  const { items, syncedAt } = getAllUpdates();
+  const pageUrl = `${siteUrl}${localePath(locale, "/updates")}`;
   const breadcrumbItems = [{ label: c.breadcrumb }];
 
   const jsonLd = {
@@ -65,8 +51,6 @@ export default async function UpdatesPage({ params, searchParams }: PageProps) {
     ],
   };
 
-  const filters: (UpdateCategory | "all")[] = ["all", "admission", "exam", "notice", "news"];
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -76,83 +60,26 @@ export default async function UpdatesPage({ params, searchParams }: PageProps) {
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-700 dark:text-brand-400">{c.eyebrow}</p>
           <h1 className="mt-2 font-display text-4xl font-semibold text-slate-900 dark:text-white">{c.title}</h1>
           <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">{c.lead}</p>
-          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-            {c.syncedLabel}: {formatUpdateDate(syncedAt.slice(0, 10), locale)}
-          </p>
+          <p className="mt-3 text-sm font-medium text-slate-500 dark:text-slate-400">{c.syncedLabel}</p>
         </header>
 
-        <div className="mt-8 flex flex-wrap gap-2">
-          {filters.map((key) => (
-            <TrackedLocaleLink
-              key={key}
-              locale={locale}
-              href={key === "all" ? "/updates" : `/updates?category=${key}`}
-              eventName="cta_click"
-              eventParams={{ cta_name: "updates_filter", category: key }}
-              className={
-                category === key
-                  ? "rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-900 dark:border-brand-700 dark:bg-brand-950/50 dark:text-brand-100"
-                  : "rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm font-medium text-slate-700 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
-              }
-            >
-              {labels[key]}
-            </TrackedLocaleLink>
-          ))}
-        </div>
-
-        {items.length === 0 ? (
-          <p className="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-6 text-slate-600 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-300">
-            {c.empty}
-          </p>
-        ) : (
-          <ul className="mt-8 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900">
-            {items.map((item) => (
-              <li key={item.id} className="p-5 sm:p-6">
-                <div className="flex flex-wrap items-center gap-2 text-xs font-medium">
-                  <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-brand-800 dark:bg-brand-950/60 dark:text-brand-200">
-                    {labels[item.category]}
-                  </span>
-                  <time dateTime={item.publishedAt} className="text-slate-500 dark:text-slate-400">
-                    {formatUpdateDate(item.publishedAt, locale)}
-                  </time>
-                  <span className="text-slate-400">·</span>
-                  <span className="text-slate-500 dark:text-slate-400">{item.source}</span>
-                </div>
-                <h2 className="mt-2 text-lg font-semibold text-slate-900 dark:text-white">
-                  <TrackedLocaleLink
-                    locale={locale}
-                    href={`/updates/${item.id}`}
-                    eventName="cta_click"
-                    eventParams={{ cta_name: "updates_item", update_id: item.id }}
-                    className="hover:text-brand-700 dark:hover:text-brand-300"
-                  >
-                    {item.title}
-                  </TrackedLocaleLink>
-                </h2>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{item.summary}</p>
-                <div className="mt-3 flex flex-wrap gap-3 text-sm font-semibold">
-                  <TrackedLocaleLink
-                    locale={locale}
-                    href={`/updates/${item.id}`}
-                    eventName="cta_click"
-                    eventParams={{ cta_name: "updates_summary", update_id: item.id }}
-                    className="text-brand-700 dark:text-brand-300"
-                  >
-                    {c.viewDetails}
-                  </TrackedLocaleLink>
-                  <TrackedAnchor
-                    href={item.url}
-                    eventName="cta_click"
-                    eventParams={{ cta_name: "updates_official", update_id: item.id }}
-                    className="text-slate-600 underline decoration-slate-300 underline-offset-4 hover:text-brand-700 dark:text-slate-400"
-                  >
-                    {c.readOfficial} ↗
-                  </TrackedAnchor>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+        <Suspense
+          fallback={
+            <div className="mt-8 animate-pulse space-y-4">
+              <div className="h-9 w-full max-w-md rounded-full bg-slate-200 dark:bg-slate-800" />
+              <div className="h-48 rounded-2xl bg-slate-200 dark:bg-slate-800" />
+            </div>
+          }
+        >
+          <UpdatesFeed
+            locale={locale}
+            items={items}
+            syncedAt={syncedAt}
+            empty={c.empty}
+            viewDetails={c.viewDetails}
+            readOfficial={c.readOfficial}
+          />
+        </Suspense>
 
         <p className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-300">
           <strong className="text-slate-900 dark:text-white">NIOS Regional Centre Delhi / NCR:</strong> A-31, Institutional Area, NH-24,
