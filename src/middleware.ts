@@ -8,8 +8,15 @@ function shouldSkip(pathname: string): boolean {
   if (pathname.startsWith("/api")) return true;
   if (pathname.startsWith("/_next")) return true;
   if (pathname === "/sitemap.xml" || pathname === "/robots.txt") return true;
+  if (pathname === "/manifest.webmanifest") return true;
   if (/\.[a-zA-Z0-9]+$/.test(pathname)) return true;
   return false;
+}
+
+function permanentRedirect(url: URL) {
+  const response = NextResponse.redirect(url, 301);
+  response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  return response;
 }
 
 export function middleware(request: NextRequest) {
@@ -22,13 +29,13 @@ export function middleware(request: NextRequest) {
   if (pathname === "/") {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}`;
-    return NextResponse.redirect(url, 308);
+    return permanentRedirect(url);
   }
 
   if (!localePrefix.test(pathname)) {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}${pathname}`;
-    return NextResponse.redirect(url, 308);
+    return permanentRedirect(url);
   }
 
   return NextResponse.next();

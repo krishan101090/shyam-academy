@@ -10,8 +10,9 @@ export function absoluteLocaleUrl(locale: Locale, path = ""): string {
 export function pageAlternates(locale: Locale, path = ""): NonNullable<Metadata["alternates"]> {
   const en = absoluteLocaleUrl("en", path);
   const hi = absoluteLocaleUrl("hi", path);
+  const canonical = absoluteLocaleUrl(locale, path);
   return {
-    canonical: absoluteLocaleUrl(locale, path),
+    canonical,
     languages: {
       en,
       hi,
@@ -19,5 +20,12 @@ export function pageAlternates(locale: Locale, path = ""): NonNullable<Metadata[
       "hi-IN": hi,
       "x-default": en,
     },
+  };
+}
+
+export function indexablePageMetadata(locale: Locale, path = ""): Pick<Metadata, "alternates" | "robots"> {
+  return {
+    alternates: pageAlternates(locale, path),
+    robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   };
 }

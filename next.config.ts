@@ -1,10 +1,18 @@
 import type { NextConfig } from "next";
+import { localeLessToEnRedirects } from "./src/lib/locale-redirects";
 
 const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   images: { unoptimized: true },
   async redirects() {
     return [
+      { source: "/", destination: "/en", permanent: true },
+      ...localeLessToEnRedirects(),
+      {
+        source: "/:path((?!en|hi|api|_next|images|favicon.ico|sitemap.xml|robots.txt|manifest.webmanifest)(?:.*))",
+        destination: "/en/:path",
+        permanent: true,
+      },
       {
         source: "/:locale(en|hi)/accounts-classes",
         destination: "/:locale/subjects/accounts",

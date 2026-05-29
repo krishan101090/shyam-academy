@@ -7,7 +7,7 @@ import { L } from "@/lib/with-locale-links";
 import { LeadFormNios } from "@/components/LeadFormNios";
 import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import { contactHref } from "@/lib/contact-context";
-import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
+import { absoluteLocaleUrl, indexablePageMetadata, siteUrl } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -37,14 +37,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     "NIOS West Delhi",
     ...hindiSeoKeywords,
   ],
-  alternates: pageAlternates(raw, "/nios-admission-delhi"),
+  ...indexablePageMetadata(raw, "/nios-admission-delhi"),
   openGraph: {
     type: "website",
     url: pageUrl,
     title: "NIOS Admission Delhi | Shri Shyam Academy — 10th & 12th",
     description:
       "Get expert help with NIOS admission in Delhi: SDMIS, subject choices, and coaching for class 10th and 12th. Request a callback from Shri Shyam Academy.",
-    locale: "en_IN",
+    locale: isHi ? "hi_IN" : "en_IN",
     images: [{ url: "/images/hero-coaching.webp", width: 1792, height: 1024, alt: "NIOS and school coaching in Delhi" }],
   },
   twitter: {
@@ -53,7 +53,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: "NIOS 10th & 12th admission help, SDMIS guidance, and coaching in West Sagarpur, New Delhi.",
     images: ["/images/hero-coaching.webp"],
   },
-  robots: { index: true, follow: true },
   };
 }
 

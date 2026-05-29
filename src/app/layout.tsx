@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: siteUrl,
+    url: `${siteUrl}/en`,
     siteName: "Shri Shyam Academy",
     title: "Shri Shyam Academy — NIOS tuition & admissions Delhi",
     description:
@@ -66,7 +66,6 @@ export const metadata: Metadata = {
     description: "NIOS tuition and admissions for 10th & 12th in New Delhi.",
     images: ["/images/hero-coaching.webp"],
   },
-  alternates: { canonical: "/en" },
   verification: {
     google: "xQFNkckm29t0f8d3FzUcUCaC2b_F5KrU1C_K5szdgXM",
   },
@@ -76,7 +75,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   name: "Shri Shyam Academy",
-  url: siteUrl,
+  url: `${siteUrl}/en`,
   telephone: "+91-8448537313",
   email: "contact@shrishyamacademy.com",
   address: {

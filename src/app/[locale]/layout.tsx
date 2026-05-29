@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { defaultLocale, isLocale, locales, type Locale } from "@/i18n/config";
+import { siteUrl } from "@/lib/seo";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { SetHtmlLang } from "@/components/SetHtmlLang";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -30,10 +32,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   );
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale: raw } = await params;
   const locale = isLocale(raw) ? raw : defaultLocale;
   return {
+    metadataBase: new URL(siteUrl),
     openGraph: {
       locale: locale === "hi" ? "hi_IN" : "en_IN",
     },
