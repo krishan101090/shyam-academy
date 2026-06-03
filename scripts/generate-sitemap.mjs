@@ -101,21 +101,23 @@ function absoluteUrl(locale, p) {
 
 
 
-const entries = locales.flatMap((locale) =>
+const entries = [...paths, ...areaPaths].flatMap(({ path, changeFrequency, priority }) => {
+  const languages = {
+    en: absoluteUrl("en", path),
+    hi: absoluteUrl("hi", path),
+    "en-IN": absoluteUrl("en", path),
+    "hi-IN": absoluteUrl("hi", path),
+    "x-default": absoluteUrl("en", path),
+  };
 
-  [...paths, ...areaPaths].map(({ path, changeFrequency, priority }) => ({
-
+  return locales.map((locale) => ({
     url: absoluteUrl(locale, path),
-
     lastModified,
-
     changeFrequency,
-
     priority,
-
-  }))
-
-);
+    alternates: { languages },
+  }));
+});
 
 
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n/config";
-import { pageAlternates } from "@/lib/seo";
+import { indexablePageMetadata } from "@/lib/seo";
 import { allSubjectSlugs, getSubject } from "@/lib/subjects-data";
 import { AccountsSubjectPage } from "@/components/subjects/AccountsSubjectPage";
 import { EconomicsSubjectPage } from "@/components/subjects/EconomicsSubjectPage";
@@ -20,8 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: subject.metaTitle,
     description: subject.metaDescription,
-    alternates: pageAlternates(locale, `/subjects/${slug}`),
-    robots: { index: true, follow: true },
+    ...indexablePageMetadata(locale, `/subjects/${slug}`),
   };
 }
 

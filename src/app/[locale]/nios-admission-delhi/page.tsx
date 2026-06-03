@@ -7,7 +7,7 @@ import { L } from "@/lib/with-locale-links";
 import { LeadFormNios } from "@/components/LeadFormNios";
 import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import { contactHref } from "@/lib/contact-context";
-import { absoluteLocaleUrl, indexablePageMetadata, siteUrl } from "@/lib/seo";
+import { absoluteLocaleUrl, buildPageMetadata, siteUrl } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -18,42 +18,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const isHi = raw === "hi";
-  const pageUrl = absoluteLocaleUrl(raw, "/nios-admission-delhi");
-  return {
-  title: isHi ? "NIOS दाखिला दिल्ली | 10वीं 12वीं SDMIS और ट्यूशन" : "NIOS Admission Delhi | Class 10 & 12 Form Help, SDMIS & Coaching",
-  description: isHi
-    ? "दिल्ली में NIOS 10वीं और 12वीं दाखिला: SDMIS, विषय योजना और ट्यूशन — श्री श्याम एकेडमी, वेस्ट सागरपुर।"
-    : pageDescription,
-  keywords: [
-    "NIOS admission Delhi",
-    "NIOS admission 2026 Delhi",
-    "NIOS 10th admission Delhi",
-    "NIOS 12th admission Delhi",
-    "NIOS SDMIS help",
-    "NIOS coaching Delhi",
-    "NIOS open school Delhi",
-    "NIOS form help Delhi",
-    "NIOS Sagarpur",
-    "NIOS West Delhi",
-    ...hindiSeoKeywords,
-  ],
-  ...indexablePageMetadata(raw, "/nios-admission-delhi"),
-  openGraph: {
-    type: "website",
-    url: pageUrl,
-    title: "NIOS Admission Delhi | Shri Shyam Academy — 10th & 12th",
-    description:
+  return buildPageMetadata({
+    locale: raw,
+    path: "/nios-admission-delhi",
+    title: isHi ? "NIOS दाखिला दिल्ली | 10वीं 12वीं SDMIS और ट्यूशन" : "NIOS Admission Delhi | Class 10 & 12 Form Help, SDMIS & Coaching",
+    description: isHi
+      ? "दिल्ली में NIOS 10वीं और 12वीं दाखिला: SDMIS, विषय योजना और ट्यूशन — श्री श्याम एकेडमी, वेस्ट सागरपुर।"
+      : pageDescription,
+    ogTitle: "NIOS Admission Delhi | Shri Shyam Academy — 10th & 12th",
+    ogDescription:
       "Get expert help with NIOS admission in Delhi: SDMIS, subject choices, and coaching for class 10th and 12th. Request a callback from Shri Shyam Academy.",
-    locale: isHi ? "hi_IN" : "en_IN",
-    images: [{ url: "/images/hero-coaching.webp", width: 1792, height: 1024, alt: "NIOS and school coaching in Delhi" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "NIOS Admission Delhi | Shri Shyam Academy",
-    description: "NIOS 10th & 12th admission help, SDMIS guidance, and coaching in West Sagarpur, New Delhi.",
-    images: ["/images/hero-coaching.webp"],
-  },
-  };
+    ogImageAlt: "NIOS and school coaching in Delhi",
+    keywords: [
+      "NIOS admission Delhi",
+      "NIOS admission 2026 Delhi",
+      "NIOS 10th admission Delhi",
+      "NIOS 12th admission Delhi",
+      "NIOS SDMIS help",
+      "NIOS coaching Delhi",
+      "NIOS open school Delhi",
+      "NIOS form help Delhi",
+      "NIOS Sagarpur",
+      "NIOS West Delhi",
+      ...hindiSeoKeywords,
+    ],
+  });
 }
 
 const faqItems = [

@@ -5,7 +5,8 @@ import { defaultLocale, isLocale, localePath, type Locale } from "@/i18n/config"
 import { getDictionary } from "@/i18n/get-dictionary";
 import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import { contactHref } from "@/lib/contact-context";
-import { absoluteLocaleUrl, pageAlternates, siteUrl } from "@/lib/seo";
+import { absoluteLocaleUrl, buildPageMetadata } from "@/lib/seo";
+import { ORG_ID, WEBSITE_ID } from "@/lib/json-ld-site";
 import { LocaleLink } from "@/components/LocaleLink";
 import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
@@ -15,7 +16,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const isHi = raw === "hi";
-  return {
+  return buildPageMetadata({
+    locale: raw,
     title: {
       absolute: isHi
         ? "NIOS ट्यूशन दिल्ली | 10वीं 12वीं कोचिंग और दाखिला | श्री श्याम एकेडमी"
@@ -24,6 +26,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: isHi
       ? "श्री श्याम एकेडमी — वेस्ट सागरपुर, दिल्ली में NIOS ट्यूशन और 10वीं/12वीं दाखिला। विषय कोचिंग, TMA, SDMIS मार्गदर्शन।"
       : "Shri Shyam Academy — NIOS tuition and 10th/12th admission in West Sagarpur, Delhi. Subject coaching, TMA help, SDMIS guidance, career counselling, KVS CUET CTET.",
+    ogTitle: isHi ? "NIOS ट्यूशन और दाखिला दिल्ली" : "NIOS Tuition & Admission Delhi",
+    ogDescription: isHi
+      ? "वेस्ट सागरपुर, दिल्ली में NIOS ट्यूशन और 10वीं/12वीं दाखिला।"
+      : "NIOS tuition and 10th/12th admission in West Sagarpur, Delhi.",
+    ogImageAlt: "Shri Shyam Academy Delhi",
     keywords: isHi
       ? ["NIOS ट्यूशन दिल्ली", "NIOS कोचिंग दिल्ली", "NIOS दाखिला", ...hindiSeoKeywords]
       : [
@@ -34,20 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           "NIOS 12th tuition",
           "NIOS admission Delhi",
         ],
-    alternates: pageAlternates(raw),
-    openGraph: {
-      type: "website",
-      url: absoluteLocaleUrl(raw),
-      siteName: "Shri Shyam Academy",
-      title: isHi ? "NIOS ट्यूशन और दाखिला दिल्ली" : "NIOS Tuition & Admission Delhi",
-      description: isHi
-        ? "वेस्ट सागरपुर, दिल्ली में NIOS ट्यूशन और 10वीं/12वीं दाखिला।"
-        : "NIOS tuition and 10th/12th admission in West Sagarpur, Delhi.",
-      locale: isHi ? "hi_IN" : "en_IN",
-      images: [{ url: "/images/hero-coaching.webp", width: 1792, height: 1024, alt: "Shri Shyam Academy Delhi" }],
-    },
-    robots: { index: true, follow: true },
-  };
+  });
 }
 
 export default async function HomePage({ params }: PageProps) {
@@ -57,23 +51,20 @@ export default async function HomePage({ params }: PageProps) {
   const t = getDictionary(locale).home;
   const c = getDictionary(locale).common;
 
+  const pageUrl = absoluteLocaleUrl(locale);
+  const isHi = locale === "hi";
   const jsonLd = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        url: siteUrl,
-        name: "Shri Shyam Academy",
-        inLanguage: locale === "hi" ? "hi" : "en-IN",
-      },
-      {
-        "@type": "EducationalOrganization",
-        name: "Shri Shyam Academy",
-        url: siteUrl,
-        telephone: "+91-8448537313",
-        email: "contact@shrishyamacademy.com",
-      },
-    ],
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: isHi ? "श्री श्याम एकेडमी — NIOS ट्यूशन दिल्ली" : "Shri Shyam Academy — NIOS Tuition Delhi",
+    description: isHi
+      ? "वेस्ट सागरपुर, दिल्ली में NIOS ट्यूशन और 10वीं/12वीं दाखिला।"
+      : "NIOS tuition and 10th/12th admission in West Sagarpur, Delhi.",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    inLanguage: locale === "hi" ? "hi-IN" : "en-IN",
   };
 
   return (
