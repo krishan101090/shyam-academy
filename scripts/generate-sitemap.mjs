@@ -30,8 +30,6 @@ const paths = [
   { path: "/contact", changeFrequency: "weekly", priority: 0.97 },
   { path: "/contact/accounts-classes", changeFrequency: "weekly", priority: 0.96 },
   { path: "/contact/economics-tuition", changeFrequency: "weekly", priority: 0.92 },
-  { path: "/contact/home-tuition", changeFrequency: "weekly", priority: 0.94 },
-  { path: "/contact/home-tuition/west-delhi", changeFrequency: "weekly", priority: 0.9 },
   { path: "/contact/nios-admission", changeFrequency: "weekly", priority: 0.95 },
   { path: "/contact/career-counselling", changeFrequency: "weekly", priority: 0.88 },
   { path: "/contact/entrance-after-12th", changeFrequency: "weekly", priority: 0.9 },
@@ -88,26 +86,8 @@ const areaPaths = [
 
 ].map((slug) => ({ path: `/home-tuition/${slug}`, changeFrequency: "weekly", priority: 0.86 }));
 
-const contactAreaPaths = areaPaths.map(({ path }) => ({
-  path: path.replace("/home-tuition/", "/contact/home-tuition/"),
-  changeFrequency: "weekly",
-  priority: 0.84,
-}));
-
-const updatesJsonPath = path.join(process.cwd(), "src/data/updates.json");
-let updateDetailPaths = [];
-try {
-  const updatesStore = JSON.parse(fs.readFileSync(updatesJsonPath, "utf8"));
-  updateDetailPaths = (updatesStore.items ?? []).map((item) => ({
-    path: `/updates/${item.id}`,
-    changeFrequency: "daily",
-    priority: 0.85,
-  }));
-} catch {
-  updateDetailPaths = [];
-}
-
-
+// Contact area mirrors and update detail pages stay reachable but are noindex — omit from sitemap
+// so Google prioritises primary landing URLs (home-tuition areas, /updates index).
 
 const lastModified = new Date().toISOString();
 
@@ -123,7 +103,7 @@ function absoluteUrl(locale, p) {
 
 const entries = locales.flatMap((locale) =>
 
-  [...paths, ...areaPaths, ...contactAreaPaths, ...updateDetailPaths].map(({ path, changeFrequency, priority }) => ({
+  [...paths, ...areaPaths].map(({ path, changeFrequency, priority }) => ({
 
     url: absoluteUrl(locale, path),
 

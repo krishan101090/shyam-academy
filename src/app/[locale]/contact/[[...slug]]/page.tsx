@@ -5,7 +5,13 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getContactContent } from "@/i18n/pages/contact";
-import { pageAlternates, siteUrl } from "@/lib/seo";
+import {
+  homeTuitionPathFromContactMirror,
+  isContactHomeTuitionMirrorPath,
+  noindexFollowMetadata,
+  pageAlternates,
+  siteUrl,
+} from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import {
@@ -43,6 +49,15 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const canonicalPath = parsed.path;
   const c = getContactContent(raw);
   const ctx = resolveContactContext(raw, { source: parsed.source, need: query.need });
+
+  if (isContactHomeTuitionMirrorPath(canonicalPath)) {
+    return {
+      title: ctx.metaTitle ?? c.metaTitle,
+      description: ctx.metaDescription ?? c.metaDescription,
+      ...noindexFollowMetadata(raw, homeTuitionPathFromContactMirror(canonicalPath)),
+    };
+  }
+
   return {
     title: ctx.metaTitle ?? c.metaTitle,
     description: ctx.metaDescription ?? c.metaDescription,

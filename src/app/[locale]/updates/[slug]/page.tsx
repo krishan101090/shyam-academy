@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
 import { getUpdatesContent } from "@/i18n/pages/updates";
 import { contactHref } from "@/lib/contact-context";
-import { pageAlternates, siteUrl } from "@/lib/seo";
+import { noindexFollowMetadata, pageAlternates, siteUrl } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
@@ -27,8 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${item.title} | Shri Shyam Academy`,
     description: item.summary,
-    alternates: pageAlternates(raw, `/updates/${slug}`),
-    robots: { index: true, follow: true },
+    ...noindexFollowMetadata(raw, `/updates/${slug}`),
   };
 }
 
