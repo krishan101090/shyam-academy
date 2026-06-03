@@ -4,6 +4,8 @@ import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import "./globals.css";
 import { GoogleAnalytics, GoogleAnalyticsHead } from "@/components/GoogleAnalytics";
 import { Providers } from "@/components/Providers";
+import { siteJsonLdGraph } from "@/lib/json-ld-site";
+import { googleBotIndexable } from "@/lib/seo";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -42,7 +44,9 @@ export const metadata: Metadata = {
     "NIOS West Delhi",
     ...hindiSeoKeywords,
   ],
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, googleBot: googleBotIndexable },
+  applicationName: "Shri Shyam Academy",
+  category: "education",
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -71,26 +75,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  name: "Shri Shyam Academy",
-  url: `${siteUrl}/en`,
-  telephone: "+91-8448537313",
-  email: "contact@shrishyamacademy.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "RZ 41 A, Shanker Park, Near Allahabad Dairy, West Sagar Pur Gandhi Market",
-    addressLocality: "New Delhi",
-    postalCode: "110046",
-    addressCountry: "IN",
-  },
-  areaServed: "Delhi NCR",
-  logo: `${siteUrl}/images/logo-site.png`,
-  image: [`${siteUrl}/images/hero-coaching.webp`, `${siteUrl}/images/logo-site.png`],
-  description:
-    "NIOS tuition and admissions guidance for Secondary (10th) and Senior Secondary (12th) in Delhi.",
-};
+const jsonLd = siteJsonLdGraph("en");
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
