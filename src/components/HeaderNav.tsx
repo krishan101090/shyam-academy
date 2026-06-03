@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Locale } from "@/i18n/config";
-import { localePath } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { ctaNameFromPath } from "@/lib/cta-names";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { TrackedAnchor } from "./TrackedAnchor";
+import { TrackedLocaleLink } from "./TrackedLocaleLink";
 
 type HeaderNavProps = {
   locale: Locale;
@@ -59,13 +59,16 @@ function NavDropdown({ locale, label, items }: { locale: Locale; label: string; 
       <div className="invisible absolute left-0 top-full z-50 min-w-[12rem] pt-1 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
         <div className="rounded-xl border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-900">
           {items.map((item) => (
-            <Link
+            <TrackedLocaleLink
               key={item.href}
-              href={localePath(locale, item.href)}
+              locale={locale}
+              href={item.href}
+              eventName="cta_click"
+              eventParams={{ cta_name: ctaNameFromPath(item.href) }}
               className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-brand-300"
             >
               {item.label}
-            </Link>
+            </TrackedLocaleLink>
           ))}
         </div>
       </div>
@@ -100,14 +103,17 @@ function MobileNavSection({
       {expanded ? (
         <div className="pb-2">
           {group.items.map((item) => (
-            <Link
+            <TrackedLocaleLink
               key={item.href}
-              href={localePath(locale, item.href)}
+              locale={locale}
+              href={item.href}
+              eventName="cta_click"
+              eventParams={{ cta_name: ctaNameFromPath(item.href), ui_section: "mobile_menu" }}
               className="block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-700 dark:text-slate-300 dark:hover:bg-slate-800/60 dark:hover:text-brand-300"
               onClick={onNavigate}
             >
               {item.label}
-            </Link>
+            </TrackedLocaleLink>
           ))}
         </div>
       ) : null}
@@ -118,7 +124,6 @@ function MobileNavSection({
 export function HeaderNav({ locale, dict }: HeaderNavProps) {
   const [open, setOpen] = useState(false);
   const n = dict.nav;
-  const contactHref = localePath(locale, "/contact#lead-form");
 
   const niosLinks: NavLink[] = [
     { href: "/nios-admission-delhi", label: n.niosAdmission },
@@ -163,21 +168,27 @@ export function HeaderNav({ locale, dict }: HeaderNavProps) {
   return (
     <>
       <nav className="hidden flex-1 items-center justify-center gap-0.5 lg:flex" aria-label="Main">
-        <Link
-          href={localePath(locale)}
+        <TrackedLocaleLink
+          locale={locale}
+          href="/"
+          eventName="cta_click"
+          eventParams={{ cta_name: "nav_home" }}
           className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
         >
           {n.home}
-        </Link>
+        </TrackedLocaleLink>
         <NavDropdown locale={locale} label={n.menuNios} items={niosLinks} />
         <NavDropdown locale={locale} label={n.menuClasses} items={classLinks} />
         <NavDropdown locale={locale} label={n.menuCoaching} items={coachingLinks} />
-        <Link
-          href={contactHref}
+        <TrackedLocaleLink
+          locale={locale}
+          href="/contact#lead-form"
+          eventName="cta_click"
+          eventParams={{ cta_name: "nav_contact" }}
           className="ml-2 inline-flex items-center justify-center rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
         >
           {n.contact}
-        </Link>
+        </TrackedLocaleLink>
       </nav>
 
       <div className="flex items-center gap-2 lg:hidden">
@@ -213,28 +224,34 @@ export function HeaderNav({ locale, dict }: HeaderNavProps) {
         }`}
       >
         <div className="flex-1 overflow-y-auto">
-          <Link
-            href={localePath(locale)}
+          <TrackedLocaleLink
+            locale={locale}
+            href="/"
+            eventName="cta_click"
+            eventParams={{ cta_name: "nav_home", ui_section: "mobile_menu" }}
             className="block border-b border-slate-100 px-4 py-3.5 text-sm font-semibold text-slate-900 dark:border-slate-800 dark:text-white"
             onClick={closeMenu}
             tabIndex={open ? 0 : -1}
           >
             {n.home}
-          </Link>
+          </TrackedLocaleLink>
           {groups.map((group) => (
             <MobileNavSection key={group.label} locale={locale} group={group} onNavigate={closeMenu} />
           ))}
         </div>
 
         <div className="shrink-0 border-t border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900/80">
-          <Link
-            href={contactHref}
+          <TrackedLocaleLink
+            locale={locale}
+            href="/contact#lead-form"
+            eventName="cta_click"
+            eventParams={{ cta_name: "nav_contact", ui_section: "mobile_menu" }}
             className="flex w-full items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
             onClick={closeMenu}
             tabIndex={open ? 0 : -1}
           >
             {n.contact}
-          </Link>
+          </TrackedLocaleLink>
           <TrackedAnchor
             href="tel:+918448537313"
             eventName="contact_click"

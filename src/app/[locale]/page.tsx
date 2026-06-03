@@ -7,7 +7,7 @@ import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import { contactHref } from "@/lib/contact-context";
 import { absoluteLocaleUrl, buildPageMetadata } from "@/lib/seo";
 import { ORG_ID, WEBSITE_ID } from "@/lib/json-ld-site";
-import { LocaleLink } from "@/components/LocaleLink";
+import { TrackedAnchor } from "@/components/TrackedAnchor";
 import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -83,27 +83,33 @@ export default async function HomePage({ params }: PageProps) {
               <p className="mt-3 text-base font-medium text-brand-800 dark:text-brand-200">{t.subtitle}</p>
               <p className="mt-4 max-w-xl text-lg text-slate-600 dark:text-slate-300">{t.intro}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <LocaleLink
+                <TrackedLocaleLink
                   locale={locale}
                   href="/services"
+                  eventName="cta_click"
+                  eventParams={{ cta_name: "home_hero_tuition" }}
                   className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
                 >
                   {t.ctaTuition}
-                </LocaleLink>
-                <LocaleLink
+                </TrackedLocaleLink>
+                <TrackedLocaleLink
                   locale={locale}
                   href="/nios-admission-delhi"
+                  eventName="cta_click"
+                  eventParams={{ cta_name: "home_hero_nios_admission" }}
                   className="inline-flex items-center justify-center rounded-lg border border-brand-300 bg-brand-50 px-5 py-3 text-sm font-semibold text-brand-900 transition hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950/50 dark:text-brand-100"
                 >
                   {t.ctaAdmission}
-                </LocaleLink>
-                <LocaleLink
+                </TrackedLocaleLink>
+                <TrackedLocaleLink
                   locale={locale}
                   href="/contact"
+                  eventName="cta_click"
+                  eventParams={{ cta_name: "home_hero_callback" }}
                   className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                 >
                   {t.ctaCallback}
-                </LocaleLink>
+                </TrackedLocaleLink>
               </div>
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600 dark:text-slate-400">
                 <div>
@@ -160,20 +166,24 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="font-semibold text-slate-900 dark:text-white">{t.tuition12Title}</p>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t.tuition12Desc}</p>
               </div>
-              <LocaleLink
+              <TrackedLocaleLink
                 locale={locale}
                 href="/services"
+                eventName="cta_click"
+                eventParams={{ cta_name: "home_tuition_details" }}
                 className="sm:col-span-2 inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
               >
                 {t.tuitionDetails}
-              </LocaleLink>
-              <LocaleLink
+              </TrackedLocaleLink>
+              <TrackedLocaleLink
                 locale={locale}
                 href={contactHref("home-tuition")}
+                eventName="cta_click"
+                eventParams={{ cta_name: "home_tuition_enquiry" }}
                 className="sm:col-span-2 inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               >
                 {t.tuitionEnquiry}
-              </LocaleLink>
+              </TrackedLocaleLink>
             </div>
           </div>
         </div>
@@ -236,9 +246,15 @@ export default async function HomePage({ params }: PageProps) {
             <h2 className="font-display text-3xl font-semibold text-slate-900 dark:text-white">{t.programmesTitle}</h2>
             <p className="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">{t.programmesLead}</p>
           </div>
-          <LocaleLink locale={locale} href="/services" className="text-sm font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300">
+          <TrackedLocaleLink
+            locale={locale}
+            href="/services"
+            eventName="cta_click"
+            eventParams={{ cta_name: "home_programmes_services" }}
+            className="text-sm font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300"
+          >
             {t.programmesLink} →
-          </LocaleLink>
+          </TrackedLocaleLink>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {t.highlights.map((item) => (
@@ -258,16 +274,28 @@ export default async function HomePage({ params }: PageProps) {
             <div className="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{t.careerCardTitle}</h3>
               <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{t.careerCardBody}</p>
-              <LocaleLink locale={locale} href="/career-counselling" className="mt-4 inline-flex text-sm font-semibold text-brand-700 dark:text-brand-300">
+              <TrackedLocaleLink
+                locale={locale}
+                href="/career-counselling"
+                eventName="cta_click"
+                eventParams={{ cta_name: "home_career_counselling" }}
+                className="mt-4 inline-flex text-sm font-semibold text-brand-700 dark:text-brand-300"
+              >
                 {t.careerLink} →
-              </LocaleLink>
+              </TrackedLocaleLink>
             </div>
             <div className="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{t.entranceCardTitle}</h3>
               <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{t.entranceCardBody}</p>
-              <LocaleLink locale={locale} href="/entrance-exams" className="mt-4 inline-flex text-sm font-semibold text-brand-700 dark:text-brand-300">
+              <TrackedLocaleLink
+                locale={locale}
+                href="/entrance-exams"
+                eventName="cta_click"
+                eventParams={{ cta_name: "home_entrance_exams" }}
+                className="mt-4 inline-flex text-sm font-semibold text-brand-700 dark:text-brand-300"
+              >
                 {t.entranceLink} →
-              </LocaleLink>
+              </TrackedLocaleLink>
               <TrackedLocaleLink
                 locale={locale}
                 href="/entrance-after-12th"
@@ -289,20 +317,24 @@ export default async function HomePage({ params }: PageProps) {
               <h2 className="font-display text-3xl font-semibold text-slate-900 dark:text-white">{t.admissionTitle}</h2>
               <p className="mt-3 text-slate-600 dark:text-slate-400">{t.admissionLead}</p>
               <div className="mt-6 flex flex-col gap-3">
-                <LocaleLink
+                <TrackedLocaleLink
                   locale={locale}
                   href="/nios-admission-delhi"
+                  eventName="cta_click"
+                  eventParams={{ cta_name: "home_admission_nios" }}
                   className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
                 >
                   {t.admissionCta}
-                </LocaleLink>
-                <LocaleLink
+                </TrackedLocaleLink>
+                <TrackedLocaleLink
                   locale={locale}
                   href="/nios"
+                  eventName="cta_click"
+                  eventParams={{ cta_name: "home_admission_guide" }}
                   className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 dark:border-slate-700 dark:text-white"
                 >
                   {t.admissionGuide}
-                </LocaleLink>
+                </TrackedLocaleLink>
               </div>
             </div>
             <div className="lg:col-span-2 grid gap-4 sm:grid-cols-2">
@@ -346,16 +378,23 @@ export default async function HomePage({ params }: PageProps) {
           <h2 className="font-display text-3xl font-semibold text-slate-900 dark:text-white">{t.ctaSectionTitle}</h2>
           <p className="mx-auto mt-3 max-w-2xl text-slate-600 dark:text-slate-400">{t.ctaSectionLead}</p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a className="inline-flex rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700" href="tel:+918448537313">
+            <TrackedAnchor
+              href="tel:+918448537313"
+              eventName="contact_click"
+              eventParams={{ contact_type: "phone", cta_name: "home_footer_call" }}
+              className="inline-flex rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700"
+            >
               {t.ctaCall}
-            </a>
-            <LocaleLink
+            </TrackedAnchor>
+            <TrackedLocaleLink
               className="inline-flex rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
               locale={locale}
               href="/contact"
+              eventName="cta_click"
+              eventParams={{ cta_name: "home_footer_contact" }}
             >
               {t.ctaForm}
-            </LocaleLink>
+            </TrackedLocaleLink>
           </div>
         </div>
       </section>

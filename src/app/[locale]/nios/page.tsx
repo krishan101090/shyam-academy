@@ -4,7 +4,8 @@ import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { contactHref } from "@/lib/contact-context";
 import { pageAlternates } from "@/lib/seo";
-import { LocaleLink } from "@/components/LocaleLink";
+import { TrackedAnchor } from "@/components/TrackedAnchor";
+import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -34,20 +35,24 @@ export default async function NiosPage({ params }: PageProps) {
         <p className="text-sm font-semibold text-brand-900 dark:text-brand-100">{t.bannerTitle}</p>
         <p className="mt-2 text-sm text-brand-900/80 dark:text-brand-100/80">{t.bannerBody}</p>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-          <LocaleLink
+          <TrackedLocaleLink
             className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
             locale={locale}
             href="/nios-admission-delhi"
+            eventName="cta_click"
+            eventParams={{ cta_name: "nios_banner_admission" }}
           >
             {t.bannerCta}
-          </LocaleLink>
-          <LocaleLink
+          </TrackedLocaleLink>
+          <TrackedLocaleLink
             className="inline-flex items-center justify-center rounded-lg border border-brand-200 bg-white px-4 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-100 dark:border-brand-900/50 dark:bg-slate-950 dark:text-brand-50 dark:hover:bg-slate-900"
             locale={locale}
             href={contactHref("nios-admission")}
+            eventName="cta_click"
+            eventParams={{ cta_name: "nios_banner_contact" }}
           >
             {t.bannerContact}
-          </LocaleLink>
+          </TrackedLocaleLink>
         </div>
       </div>
 
@@ -79,19 +84,23 @@ export default async function NiosPage({ params }: PageProps) {
         <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{t.readyTitle}</h2>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t.readyP}</p>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <LocaleLink
+          <TrackedLocaleLink
             className="inline-flex justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
             locale={locale}
             href="/nios-admission-delhi"
+            eventName="cta_click"
+            eventParams={{ cta_name: "nios_ready_admission" }}
           >
             {t.readyCta}
-          </LocaleLink>
-          <a
+          </TrackedLocaleLink>
+          <TrackedAnchor
             className="inline-flex justify-center rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800"
             href="tel:+918448537313"
+            eventName="contact_click"
+            eventParams={{ contact_type: "phone", cta_name: "nios_ready_call" }}
           >
             {t.readyCall}
-          </a>
+          </TrackedAnchor>
         </div>
       </div>
     </div>

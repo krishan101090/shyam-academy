@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageAlternates } from "@/lib/seo";
-import { LocaleLink } from "@/components/LocaleLink";
+import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -56,13 +56,26 @@ export default async function AboutPage({ params }: PageProps) {
           <a className="font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300" href="tel:+918448537313">
             +91 84485 37313
           </a>
-          , <LocaleLink className="font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300" locale={locale} href="/nios-admission-delhi">
+          ,{" "}
+          <TrackedLocaleLink
+            className="font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300"
+            locale={locale}
+            href="/nios-admission-delhi"
+            eventName="cta_click"
+            eventParams={{ cta_name: "about_nios_admission" }}
+          >
             {t.startedAdmission}
-          </LocaleLink>
+          </TrackedLocaleLink>
           {t.startedOr}{" "}
-          <LocaleLink className="font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300" locale={locale} href="/contact">
+          <TrackedLocaleLink
+            className="font-semibold text-brand-700 hover:text-brand-800 dark:text-brand-300"
+            locale={locale}
+            href="/contact"
+            eventName="cta_click"
+            eventParams={{ cta_name: "about_contact" }}
+          >
             {t.startedContact}
-          </LocaleLink>
+          </TrackedLocaleLink>
           {t.startedAfter}
         </p>
       </div>

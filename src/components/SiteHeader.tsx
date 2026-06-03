@@ -1,12 +1,11 @@
 import Image from "next/image";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { localePath } from "@/i18n/config";
-import Link from "next/link";
+import { HeaderNav } from "./HeaderNav";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { TrackedAnchor } from "./TrackedAnchor";
-import { HeaderNav } from "./HeaderNav";
+import { TrackedLocaleLink } from "./TrackedLocaleLink";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -17,7 +16,13 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-950/90">
       <div className="relative mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:px-6 lg:h-auto lg:min-h-[3.75rem] lg:px-8">
-        <Link href={localePath(locale)} className="group flex min-w-0 shrink-0 items-center gap-2">
+        <TrackedLocaleLink
+          locale={locale}
+          href="/"
+          eventName="cta_click"
+          eventParams={{ cta_name: "nav_logo_home" }}
+          className="group flex min-w-0 shrink-0 items-center gap-2"
+        >
           <Image
             src="/images/logo-site.png"
             width={53}
@@ -29,7 +34,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
             <p className="truncate font-display text-base font-semibold text-slate-900 dark:text-white">Shri Shyam Academy</p>
             <p className="truncate text-xs text-slate-500 dark:text-slate-400">{dict.header.tagline}</p>
           </div>
-        </Link>
+        </TrackedLocaleLink>
         <div className="flex min-w-0 flex-1 items-center justify-end lg:justify-center">
           <HeaderNav locale={locale} dict={dict} />
         </div>

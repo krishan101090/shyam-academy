@@ -5,7 +5,7 @@ import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { contactHref } from "@/lib/contact-context";
 import { pageAlternates } from "@/lib/seo";
-import { LocaleLink } from "@/components/LocaleLink";
+import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -36,20 +36,24 @@ export default async function ServicesPage({ params }: PageProps) {
         <p className="mt-2 text-base font-medium text-brand-800 dark:text-brand-200">{t.subtitle}</p>
         <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">{t.intro}</p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <LocaleLink
+          <TrackedLocaleLink
             locale={locale}
             href="/nios-admission-delhi"
+            eventName="cta_click"
+            eventParams={{ cta_name: "services_nios_admission" }}
             className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-3 text-sm font-semibold text-white hover:bg-brand-700"
           >
             {t.ctaAdmission}
-          </LocaleLink>
-          <LocaleLink
+          </TrackedLocaleLink>
+          <TrackedLocaleLink
             locale={locale}
             href={contactHref("nios-admission")}
+            eventName="cta_click"
+            eventParams={{ cta_name: "services_tuition_enquiry" }}
             className="inline-flex items-center justify-center rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 dark:border-slate-700 dark:text-white dark:hover:bg-slate-800"
           >
             {t.ctaTuition}
-          </LocaleLink>
+          </TrackedLocaleLink>
         </div>
       </div>
       <div className="relative mt-10 h-48 w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 sm:h-56">

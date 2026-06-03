@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, localePath, type Locale } from "@/i18n/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { TrackedAnchor } from "@/components/TrackedAnchor";
+import { TrackedLocaleLink } from "@/components/TrackedLocaleLink";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { L } from "@/lib/with-locale-links";
 import { LeadFormNios } from "@/components/LeadFormNios";
 import { hindiSeoKeywords } from "@/lib/seo-keywords";
 import { contactHref } from "@/lib/contact-context";
@@ -123,33 +124,41 @@ export default async function NiosAdmissionDelhiPage({ params }: PageProps) {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <L
+              <TrackedLocaleLink
                 locale={locale}
                 href={contactHref("nios-admission")}
+                eventName="cta_click"
+                eventParams={{ cta_name: "nios_admission_enquire" }}
                 className="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
               >
                 Enquire about admission
-              </L>
-              <a
-                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
+              </TrackedLocaleLink>
+              <TrackedAnchor
                 href="tel:+918448537313"
+                eventName="contact_click"
+                eventParams={{ contact_type: "phone", cta_name: "nios_admission_call" }}
+                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
               >
                 Call +91 84485 37313
-              </a>
-              <L
+              </TrackedAnchor>
+              <TrackedLocaleLink
                 locale={locale}
-                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
                 href="/updates"
+                eventName="cta_click"
+                eventParams={{ cta_name: "nios_admission_updates" }}
+                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
               >
                 NIOS Delhi updates
-              </L>
-              <L
+              </TrackedLocaleLink>
+              <TrackedLocaleLink
                 locale={locale}
-                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
                 href="/nios"
+                eventName="cta_click"
+                eventParams={{ cta_name: "nios_admission_guide" }}
+                className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
               >
                 Read NIOS guide
-              </L>
+              </TrackedLocaleLink>
             </div>
 
             <section className="mt-12" aria-labelledby="why-heading">
